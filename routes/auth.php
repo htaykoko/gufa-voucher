@@ -42,30 +42,30 @@ Route::prefix('admin')->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::middleware('auth')->group(function () {
+    // Route::middleware('auth')->group(function () {
 
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('admin.dashboard');
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard1');
+    })->name('admin.dashboard');
 
-        Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-        Route::resource("customer", CustomerController::class);
+    Route::resource("customer", CustomerController::class);
 
-        // Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
-        //     ->name('verification.notice');
+    // Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
+    //     ->name('verification.notice');
 
-        // Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-        //     ->middleware(['signed', 'throttle:6,1'])
-        //     ->name('verification.verify');
+    // Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+    //     ->middleware(['signed', 'throttle:6,1'])
+    //     ->name('verification.verify');
 
-        // Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-        //     ->middleware('throttle:6,1')
-        //     ->name('verification.send');
+    // Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+    //     ->middleware('throttle:6,1')
+    //     ->name('verification.send');
 
-        // Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
-        //     ->name('password.confirm');
+    // Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
+    //     ->name('password.confirm');
 
-        // Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
-    });
+    // Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+    // });
 });

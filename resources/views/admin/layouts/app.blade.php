@@ -20,6 +20,7 @@
 
 <body class="font-sans antialiased">
     @include('admin.layouts.navbar')
+    @include('admin.layouts.sidebar')
     <div class="min-h-screen bg-gray-100">
 
         <!-- Page Content -->
@@ -27,7 +28,8 @@
             {{ $slot }}
         </main>
     </div>
-    @include('admin.layouts.footer')
+    @include('admin.layouts.footer1')
+    {{-- @include('admin.layouts.footer') --}}
 </body>
 
 </html>
