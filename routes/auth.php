@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -50,7 +51,8 @@ Route::prefix('admin')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    Route::resource("customer", CustomerController::class);
+    Route::resource("customers", CustomerController::class);
+    Route::resource("users", UserController::class);
 
     // Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
     //     ->name('verification.notice');
