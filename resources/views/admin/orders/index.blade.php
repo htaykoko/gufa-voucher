@@ -10,11 +10,11 @@
                             </h3>
                         </div>
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                            <a href="{{ route('admin.customers.create') }}"
+                            <button
                                 class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                                 type="button" style="transition:all .15s ease">
-                                Create
-                            </a>
+                                See all
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -27,48 +27,44 @@
                                     ID</td>
                                 <td
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
-                                    Name</td>
+                                    Voucher ID</td>
                                 <td
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
-                                    Phone</td>
+                                    Code</td>
                                 <td
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
-                                    Address</td>
+                                    Date</td>
+                                <td
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                                    Total</td>
                                 <td
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
                                     Action</td>
                             </tr>
-                            @foreach ($customers as $customer)
+                            @foreach ($orders as $order)
                                 <tr>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         {{ $loop->iteration }}</td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $customer->name }}</td>
+                                        {{ $order->voucher_id }}</td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $customer->phone }}</td>
+                                        <a href="{{ route('admin.') }}">{{ $order->code }}</a>
+                                    </td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $customer->address }}</td>
+                                        {{ $order->date }}
+                                    </td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href="{{ route('admin.customers.show', $customer->id) }}">
-                                            <button><i class="fas fa-trash text-red-500 mr-4"></i>View</button>
-                                        </a>
-
-                                        <a href="{{ route('admin.customers.edit', $customer->id) }}">
-                                            <button><i class="fas fa-trash text-red-500 mr-4"></i>Edit</button>
-                                        </a>
-
-                                        <form action="{{ route('admin.customers.destroy', $customer->id) }}"
-                                            method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button><i class="fas fa-eye text-red-500 mr-4"
-                                                    onclick="return confirm('Are You Sure?');">Delete</i></button>
-                                        </form>
+                                        {{ $order->sub_totals }}
+                                    </td>
+                                    <td
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        <button><i class="fas fa-trash text-red-500 mr-4"></i></button>
+                                        <button><i class="fas fa-eye text-red-500 mr-4"></i></button>
                                     </td>
                                 </tr>
                             @endforeach

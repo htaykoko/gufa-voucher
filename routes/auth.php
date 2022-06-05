@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\OrderDetailController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware('guest')->group(function () {
@@ -36,38 +39,25 @@ use Illuminate\Support\Facades\Route;
 //                 ->name('password.update');
 // });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->name("admin.")->group(function () {
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    // Route::middleware('auth')->group(function () {
+    Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard1');
-    })->name('admin.dashboard');
+        Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+        Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    Route::resource("customers", CustomerController::class);
-    Route::resource("users", UserController::class);
+        Route::resource("customers", CustomerController::class);
 
-    // Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
-    //     ->name('verification.notice');
+        Route::resource("orders", OrderController::class);
 
-    // Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-    //     ->middleware(['signed', 'throttle:6,1'])
-    //     ->name('verification.verify');
+        Route::resource("order_details", OrderDetailController::class);
 
-    // Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-    //     ->middleware('throttle:6,1')
-    //     ->name('verification.send');
-
-    // Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
-    //     ->name('password.confirm');
-
-    // Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
-    // });
+        Route::resource("users", UserController::class);
+    });
 });

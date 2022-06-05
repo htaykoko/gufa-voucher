@@ -83,37 +83,32 @@
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 <li class="items-center">
                     <a class="text-pink-500 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
-                        href="#/dashboard"><i class="fas fa-tv opacity-75 mr-2 text-sm"></i>
+                        href="{{ route('admin.dashboard') }}"><i class="fas fa-tv opacity-75 mr-2 text-sm"></i>
                         Dashboard</a>
                 </li>
                 <li class="items-center">
                     <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                        href="#/landing"><i class="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>
-                        Landing Page</a>
+                        href="{{ route('admin.customers.index') }}"><i
+                            class="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>
+                        Customer</a>
                 </li>
                 <li class="items-center">
                     <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                        href="#/profile"><i class="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>
-                        Profile Page</a>
+                        href="{{ route('admin.orders.index') }}"><i
+                            class="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>
+                        Order</a>
                 </li>
                 <li class="items-center">
                     <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                        href="#/login"><i class="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>
-                        Login</a>
+                        href="{{ route('admin.users.index') }}"><i
+                            class="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>
+                        User</a>
                 </li>
-                <li class="items-center">
-                    <a class="text-blueGray-300 text-xs uppercase py-3 font-bold block" href="#pablo"><i
-                            class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-                        Register (soon)</a>
-                </li>
-                <li class="items-center">
-                    <a class="text-blueGray-300 text-xs uppercase py-3 font-bold block" href="#pablo"><i
-                            class="fas fa-tools text-blueGray-300 mr-2 text-sm"></i>
-                        Settings (soon)</a>
-                </li>
+
             </ul>
             <hr class="my-4 md:min-w-full" />
-            <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+
+            {{-- <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                 Documentation
             </h6>
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
@@ -151,7 +146,7 @@
                             class="fab fa-js-square mr-2 text-blueGray-400 text-base"></i>
                         Javascript</a>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
 </nav>
