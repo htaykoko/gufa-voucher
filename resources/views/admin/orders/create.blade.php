@@ -1,9 +1,11 @@
 <x-admin-app-layout>
     <div class="flex flex-wrap">
-        <div class="w-full xl:w-10/12 mb-12 xl:mb-0 px-4">
+        <div class="w-full xl:w-12 mb-12 xl:mb-0 px-4">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-                <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:grid md:grid-cols-2 md:gap-6">
                     <div class="mt-5 md:mt-0 md:col-span-2">
+                        <!-- Validation Errors -->
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         <form action="{{ route('admin.orders.store') }}" method="POST">
                             @method('post')
                             @csrf
@@ -29,21 +31,81 @@
                                         </div>
                                     </div>
 
-                                    <div class="grid grid-cols-3 gap-6">
+                                    <div class="grid grid-cols-6 gap-6" id="add-order">
+                                        <div class="col-span-1 sm:col-span-1">
+                                            <label for="product_name"
+                                                class="block text-sm text-center font-medium text-gray-700">Product
+                                                Name</label>
+                                            <input type="text" name="product_name" id="product_name"
+                                                autocomplete="product_name-name"
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+
+                                        <div class="col-span-1 sm:col-span-1">
+                                            <label for="quantity"
+                                                class="block text-sm text-center font-medium text-gray-700">Quantity</label>
+                                            <input type="text" name="quantity" id="quantity" autocomplete="quantity"
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+
+                                        <div class="col-span-1 sm:col-span-1">
+                                            <label for="unit_id"
+                                                class="block text-sm text-center font-medium text-gray-700">Unit</label>
+                                            <select id="unit_id" name="unit_id" autocomplete="unit_id"
+                                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                <option value="1">Kg</option>
+                                                <option value="2">Cbm</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-span-1 sm:col-span-1">
+                                            <label for="unit_qty"
+                                                class="block text-sm text-center font-medium text-gray-700">Weight</label>
+                                            <input type="number" name="unit_qty" id="unit_qty" autocomplete="unit_qty"
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+
+                                        <div class="col-span-1 sm:col-span-1">
+                                            <label for="price"
+                                                class="block text-sm text-center font-medium text-gray-700">Price</label>
+                                            <input type="number" name="price" id="price" autocomplete="price"
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                        <div class="col-span-1 sm:col-span-1">
+                                            <button
+                                                class="mt-5 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500"
+                                                id="add_btn" onclick="addFun()">Add</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6 sm:col-span-3">
-                                            <label for="carry_fee" class="block text-sm font-medium text-gray-700">Carry
+                                            <label for="china_delivery_fee"
+                                                class="block text-sm font-medium text-gray-700">China
+                                                Delivery
                                                 Fee</label>
-                                            <input type="text" name="carry_fee" id="carry_fee"
-                                                autocomplete="carry_fee-name"
+                                            <input type="number" name="china_delivery_fee" id="china_delivery_fee"
+                                                autocomplete="china_delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-3">
+                                            <label for="custom_fee"
+                                                class="block text-sm font-medium text-gray-700">Custom Fee</label>
+                                            <input type="number" name="custom_fee" id="custom_fee"
+                                                autocomplete="custom_fee"
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6 sm:col-span-3">
                                             <label for="delivery_fee"
                                                 class="block text-sm font-medium text-gray-700">Delivery
                                                 Fee</label>
-                                            <input type="text" name="delivery_fee" id="delivery_fee"
-                                                autocomplete="family-name"
+                                            <input type="number" name="delivery_fee" id="delivery_fee"
+                                                autocomplete="delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                     </div>
@@ -65,8 +127,8 @@
                                             <label for="currency_exchange_rate"
                                                 class="block text-sm font-medium text-gray-700">Currency Exchange
                                                 Rate</label>
-                                            <input type="text" name="currency_exchange_rate" id="currency_exchange_rate"
-                                                autocomplete="currency_exchange_rate-name"
+                                            <input type="number" name="currency_exchange_rate"
+                                                id="currency_exchange_rate" autocomplete="currency_exchange_rate"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
 
@@ -83,4 +145,9 @@
             </div>
         </div>
     </div>
+    <script>
+        function addFun() {
+            document.getElementById("add-order").html("<div>tetst</div>")
+        }
+    </script>
 </x-admin-app-layout>

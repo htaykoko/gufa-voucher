@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -44,11 +45,33 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $data = $request->validated();
-        $data['code'] = $this->generateOrderCode();
-        $data['created_by'] = auth()->id();
-        $data = Order::create($data);
-        if ($data)
-            return redirect()->route("admin.orders.edit", $data)->with('success', "Success");
+        DB::transaction(function () use ($data) {
+            // dd($data);
+            $order = Order::create([
+                'code' => str_pad(date("dmY") . "-" . $this->generateOrderCode(), 14, 0, STR_PAD_LEFT),
+                'customer_id' => $data['customer_id'],
+                'voucher_id' => $this->generateOrderCode(),
+                'date' => $data['date'],
+                "sub_totals" => 100,
+                "net_total" => 100,
+                'delivery_fee' => $data['delivery_fee'],
+                "custom_fee" => $data['custom_fee'],
+                "currency_exchange_rate" => $data['currency_exchange_rate'],
+                'payment_type' => $data['payment_type'],
+                'created_by' => auth()->id(),
+            ]);
+
+            $order->orderDetail()->create([
+                "product_name" => $data['product_name'],
+                "quantity" => $data['quantity'],
+                "unit_id" => $data['unit_id'],
+                "unit_qty" => $data['unit_qty'],
+                "price" => $data['price'],
+                "amount" => $data['price'] * $data['unit_qty'],
+            ]);
+        });
+
+        return redirect()->route("admin.orders.index")->with('success', "Success");
     }
 
     /**
@@ -101,7 +124,7 @@ class OrderController extends Controller
     public function generateOrderCode()
     {
         $order = Order::all()->last();
-        $code = $order->code + 1;
+        $code = optional($order)->voucher_id + 1;
         return $code;
     }
 }

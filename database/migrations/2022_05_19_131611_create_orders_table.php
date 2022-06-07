@@ -24,6 +24,8 @@ class CreateOrdersTable extends Migration
             $table->decimal("sub_totals", 8, 4);
             $table->decimal("net_total", 8, 4);
             $table->decimal("carry_fee")->default("0");
+            $table->decimal("china_delivery_fee")->default("0");
+            $table->decimal("custom_fee")->default("0");
             $table->decimal("delivery_fee")->default("0");
 
             $table->string("payment_type")->nullable(); // cash or banking
