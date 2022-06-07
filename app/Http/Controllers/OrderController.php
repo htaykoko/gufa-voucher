@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Customer;
 
 class OrderController extends Controller
 {
@@ -28,7 +29,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        return view('admin.orders.create', [
+            'customers' => $customers,
+        ]);
     }
 
     /**
@@ -39,7 +43,12 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['code'] = $this->generateOrderCode();
+        $data['created_by'] = auth()->id();
+        $data = Order::create($data);
+        if ($data)
+            return redirect()->route("admin.orders.edit", $data)->with('success', "Success");
     }
 
     /**
@@ -61,7 +70,9 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('admin.orders.edit', [
+            'data' => $order
+        ]);
     }
 
     /**
@@ -85,5 +96,12 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function generateOrderCode()
+    {
+        $order = Order::all()->last();
+        $code = $order->code + 1;
+        return $code;
     }
 }

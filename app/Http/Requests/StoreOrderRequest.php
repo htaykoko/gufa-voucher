@@ -24,7 +24,12 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'customer_id' => 'required',
+            'date' => 'required',
+            'carry_fee' => 'nullable',
+            'delivery_fee' => 'nullable',
+            'payment_type' => 'required',
+            'currency_exchange_rate' => 'nullable',
         ];
     }
 }

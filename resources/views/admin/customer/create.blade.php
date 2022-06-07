@@ -44,7 +44,8 @@
                                                 Address
                                             </label>
                                             <div class="mt-1">
-                                                <textarea id="address" name="address" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                                <textarea id="address" name="address" rows="3"
+                                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                                     placeholder="enter your address"></textarea>
                                             </div>
                                             <p class="mt-2 text-sm text-gray-500"></p>
@@ -56,8 +57,8 @@
                                                 class="block text-sm font-medium text-gray-700">Gender</label>
                                             <select id="gender" name="gender" autocomplete="gender-name"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                <option>Active</option>
-                                                <option>In-Active</option>
+                                                <option value="1">Active</option>
+                                                <option value="0">In-Active</option>
                                             </select>
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
@@ -65,8 +66,8 @@
                                                 class="block text-sm font-medium text-gray-700">Status</label>
                                             <select id="status" name="status" autocomplete="status-name"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                <option>Active</option>
-                                                <option>In-Active</option>
+                                                <option value="1">Active</option>
+                                                <option value="0">In-Active</option>
                                             </select>
                                         </div>
 
