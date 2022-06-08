@@ -45,40 +45,40 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $data = $request->validated();
-        DB::transaction(function () use ($data) {
+        $order = DB::transaction(function () use ($data) {
             // dd($data);
             $order = Order::create([
                 'code' => str_pad(date("dmY") . "-" . $this->generateOrderCode(), 14, 0, STR_PAD_LEFT),
                 'customer_id' => $data['customer_id'],
                 'voucher_id' => $this->generateOrderCode(),
                 'date' => $data['date'],
-                "sub_totals" => 100,
-                "net_total" => 100,
                 'delivery_fee' => $data['delivery_fee'],
                 "custom_fee" => $data['custom_fee'],
+                "china_delivery_fee" => $data['china_delivery_fee'],
                 "currency_exchange_rate" => $data['currency_exchange_rate'],
                 'payment_type' => $data['payment_type'],
                 'created_by' => auth()->id(),
             ]);
-            for ($i = 0; $i < request('total_item'); $i++) {
-                $data['invoice_id'] =  $invoice->id;
-                $data['tracking_code'] = request('order_item_tracking_code')[$i];
-                $data['volume_cbm'] = request('order_item_volume_cbm')[$i];
-                $data['weigh_kg'] = request('order_item_weight_kg')[$i];
-                $data['price'] = request('order_item_price')[$i];
-                $data['amount'] = request('order_item_amount_ks')[$i];
+            $sub_total = 0;
+            for ($i = 0; $i < sizeof($data['product_name']); $i++) {
+                $amount = $data['price'][$i] * $data['unit_qty'][$i];
+                $sub_total += $amount;
                 $order->orderDetail()->create([
-                    "product_name" => $data['product_name'],
-                    "quantity" => $data['quantity'],
-                    "unit_id" => $data['unit_id'],
-                    "unit_qty" => $data['unit_qty'],
-                    "price" => $data['price'],
-                    "amount" => $data['price'] * $data['unit_qty'],
+                    "product_name" => $data['product_name'][$i],
+                    "quantity" => $data['quantity'][$i],
+                    "unit_id" => $data['unit_id'][$i],
+                    "unit_qty" => $data['unit_qty'][$i],
+                    "price" => $data['price'][$i],
+                    "amount" => $data['price'][$i] * $data['unit_qty'][$i],
                 ]);
             }
+            $order->update([
+                "sub_totals" => $sub_total,
+                "net_total" => ($sub_total + $data['delivery_fee'] + $data['custom_fee']),
+            ]);
+            return $order;
         });
-
-        return redirect()->route("admin.orders.index")->with('success', "Success");
+        return redirect()->route("admin.orders.show", $order->id)->with('success', "Success");
     }
 
     /**
@@ -89,7 +89,10 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        // dd($order->with('orderDetail', 'customer'));
+        return view('admin.orders.show', [
+            'data' => $order
+        ]);
     }
 
     /**
@@ -101,7 +104,8 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         return view('admin.orders.edit', [
-            'data' => $order
+            'data' => $order,
+            'customers' => Customer::all()
         ]);
     }
 
@@ -114,7 +118,36 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        //
+        $data = $request->validated();
+        DB::transaction(function () use ($order, $data) {
+            $sub_total = 0;
+            $order->orderDetail()->delete();
+            for ($i = 0; $i < sizeof($data['product_name']); $i++) {
+                $amount = $data['price'][$i] * $data['unit_qty'][$i];
+                $sub_total += $amount;
+                $order->orderDetail()->create([
+                    "product_name" => $data['product_name'][$i],
+                    "quantity" => $data['quantity'][$i],
+                    "unit_id" => $data['unit_id'][$i],
+                    "unit_qty" => $data['unit_qty'][$i],
+                    "price" => $data['price'][$i],
+                    "amount" => $amount
+                ]);
+            }
+            $order->update([
+                'customer_id' => $data['customer_id'],
+                'date' => $data['date'],
+                "sub_totals" => $sub_total,
+                "net_total" => ($sub_total + $data['delivery_fee'] + $data['custom_fee']),
+                'delivery_fee' => $data['delivery_fee'],
+                "custom_fee" => $data['custom_fee'],
+                "china_delivery_fee" => $data['china_delivery_fee'],
+                "currency_exchange_rate" => $data['currency_exchange_rate'],
+                'payment_type' => $data['payment_type'],
+                'updated_by' => auth()->id(),
+            ]);
+        });
+        return redirect()->route("admin.orders.show", $order->id)->with('success', "Success");
     }
 
     /**
@@ -125,7 +158,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return back()->with('success', config('messages.deleteSuccess'));
     }
 
     public function generateOrderCode()

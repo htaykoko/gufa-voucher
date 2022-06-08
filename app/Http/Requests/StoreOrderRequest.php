@@ -33,11 +33,11 @@ class StoreOrderRequest extends FormRequest
             'currency_exchange_rate' => 'nullable',
 
             // orderd details data
-            'product_name' => 'required',
-            'quantity' => 'required',
-            'unit_id' => 'required',
-            'unit_qty' => 'required',
-            'price' => 'required',
+            'product_name.*' => 'required',
+            'quantity.*' => 'required',
+            'unit_id.*' => 'required',
+            'unit_qty.*' => 'required',
+            'price.*' => 'required',
         ];
     }
 }

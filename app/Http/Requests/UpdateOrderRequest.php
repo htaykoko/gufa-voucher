@@ -13,7 +13,7 @@ class UpdateOrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class UpdateOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'customer_id' => 'required',
+            'date' => 'required',
+            'china_delivery_fee' => 'nullable',
+            'custom_fee' => 'nullable',
+            'delivery_fee' => 'nullable',
+            'payment_type' => 'required',
+            'currency_exchange_rate' => 'nullable',
+
+            // orderd details data
+            'product_name.*' => 'required',
+            'quantity.*' => 'required',
+            'unit_id.*' => 'required',
+            'unit_qty.*' => 'required',
+            'price.*' => 'required',
         ];
     }
 }

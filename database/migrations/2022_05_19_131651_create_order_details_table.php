@@ -19,11 +19,11 @@ class CreateOrderDetailsTable extends Migration
 
             $table->foreignIdFor(Order::class)->cascadeOnDelete();
             $table->string("product_name", 500)->nullable();
-            $table->string("quantity")->nullable();
+            $table->integer("quantity")->nullable();
             $table->string("unit_id")->nullable(); //kg or cbm
             $table->string("unit_qty")->nullable();
-            $table->decimal("price")->nullable();
-            $table->decimal("amount")->nullable(); //unit_qty * price
+            $table->double("price")->nullable();
+            $table->double("amount")->nullable(); //unit_qty * price
 
             $table->softDeletes();
             $table->timestamps();

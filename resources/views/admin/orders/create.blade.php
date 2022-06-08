@@ -1,6 +1,6 @@
 <x-admin-app-layout>
     <div class="flex flex-wrap">
-        <div class="w-full xl:w-12 mb-12 xl:mb-0 px-4">
+        <div class="w-full xl-w-12 mb-12 xl:mb-0 px-4">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                 <div class="md:grid md:grid-cols-2 md:gap-6">
                     <div class="mt-5 md:mt-0 md:col-span-2">
@@ -78,7 +78,7 @@
                                             <div class="col-span-1 sm:col-span-1">
                                                 <button
                                                     class="mt-5 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500"
-                                                    id="add_btn" type="button">Add</button>
+                                                    id="add_row" type="button">Add</button>
                                             </div>
                                         </div>
                                     </div>
@@ -88,10 +88,10 @@
                                         <div class="col-span-6 sm:col-span-3">
                                         </div>
 
-                                        <div class="col-span-3 sm:col-span-3">
+                                        <div class="col-span-1 sm:col-span-1">
                                             Sub Total
                                         </div>
-                                        <div class="col-span-3 sm:col-span-3">
+                                        <div class="col-span-1 sm:col-span-1">
                                             <span id="final_total_amt"></span>
                                         </div>
                                     </div>
@@ -164,82 +164,72 @@
             </div>
         </div>
     </div>
-    <script>
-        // function addFun() {
-        var count = 1;
-        $(document).on('click', '#add_row', function() {
-            count++;
-            $('#total_item').val(count);
-            var html_code = '';
-            html_code += '<div class="grid grid-cols-6 gap-6" id="row_id_' + count + '">';
-            html_code += '    <div class="col-span-1 sm:col-span-1">';
-            html_code += '        <label for="product_name"';
-            html_code += '            class="block text-sm text-center font-medium text-gray-700">Product';
-            html_code += '            Name</label>';
-            html_code += '        <input type="text" name="product_name[]" id="product_name"';
-            html_code += '            autocomplete="product_name-name"';
-            html_code +=
-                '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
-            html_code += '    </div>';
-
-            html_code += '    <div class="col-span-1 sm:col-span-1">';
-            html_code += '        <label for="quantity"';
-            html_code += '            class="block text-sm text-center font-medium text-gray-700">Quantity</label>';
-            html_code += '        <input type="text" name="quantity[]" id="quantity" autocomplete="quantity"';
-            html_code +=
-                '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
-            html_code += '    </div>';
-
-            html_code += '    <div class="col-span-1 sm:col-span-1">';
-            html_code += '        <label for="unit_id"';
-            html_code += '            class="block text-sm text-center font-medium text-gray-700">Unit</label>';
-            html_code += '        <select id="unit_id" name="unit_id[]" autocomplete="unit_id"';
-            html_code +=
-                '            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">';
-            html_code += '            <option value="1">Kg</option>';
-            html_code += '            <option value="2">Cbm</option>';
-            html_code += '        </select>';
-            html_code += '    </div>';
-
-            html_code += '    <div class="col-span-1 sm:col-span-1">';
-            html_code += '        <label for="unit_qty"';
-            html_code += '            class="block text-sm text-center font-medium text-gray-700">Weight</label>';
-            html_code += '        <input type="number" name="unit_qty[]" id="unit_qty"';
-            html_code += '            autocomplete="unit_qty"';
-            html_code +=
-                '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
-            html_code += '    </div>';
-
-            html_code += '    <div class="col-span-1 sm:col-span-1">';
-            html_code += '        <label for="price"';
-            html_code += '            class="block text-sm text-center font-medium text-gray-700">Price</label>';
-            html_code += '        <input type="number" name="price[]" id="price" autocomplete="price"';
-            html_code +=
-                '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
-            html_code += '    </div>';
-            html_code += '    <div class="col-span-1 sm:col-span-1">';
-            html_code += '        <button';
-            html_code +=
-                '            class="mt-5 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 remove_row"';
-            html_code += '           type="button" id="' + count + '">X</button>';
-            html_code += '    </div>';
-            html_code += '</div>';
-
-            $('#add-order').append(html_code);
-        });
-        // }
-
-        //Remove Item Row
-        $(document).on('click', '.remove_row', function() {
-            var row_id = $(this).attr("id");
-            var total_item_amount = $('#order_item_amount_ks' + row_id).val();
-            var final_amount = $('#final_total_amt').text();
-            var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
-            $('#final_total_amt').text(result_amount);
-            $('#row_id_' + row_id).remove();
-            count--;
-            $('#total_item').val(count);
-        });
-        //End Remove Item Row
-    </script>
 </x-admin-app-layout>
+
+<script>
+    // function addFun() {
+    var count = 1;
+    $(document).on('click', '#add_row', function() {
+        count++;
+        // $('#total_item').val(count);
+        var html_code = '';
+        html_code += '<div class="grid grid-cols-6 gap-6" id="row_id_' + count + '">';
+        html_code += '    <div class="col-span-1 sm:col-span-1">';
+        html_code += '        <input type="text" name="product_name[]" id="product_name"';
+        html_code += '            autocomplete="product_name-name"';
+        html_code +=
+            '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+        html_code += '    </div>';
+
+        html_code += '    <div class="col-span-1 sm:col-span-1">';
+        html_code += '        <input type="text" name="quantity[]" id="quantity" autocomplete="quantity"';
+        html_code +=
+            '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+        html_code += '    </div>';
+
+        html_code += '    <div class="col-span-1 sm:col-span-1">';
+        html_code += '        <select id="unit_id" name="unit_id[]" autocomplete="unit_id"';
+        html_code +=
+            '            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">';
+        html_code += '            <option value="1">Kg</option>';
+        html_code += '            <option value="2">Cbm</option>';
+        html_code += '        </select>';
+        html_code += '    </div>';
+
+        html_code += '    <div class="col-span-1 sm:col-span-1">';
+        html_code += '        <input type="number" name="unit_qty[]" id="unit_qty"';
+        html_code += '            autocomplete="unit_qty"';
+        html_code +=
+            '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+        html_code += '    </div>';
+
+        html_code += '    <div class="col-span-1 sm:col-span-1">';
+        html_code += '        <input type="number" name="price[]" id="price" autocomplete="price"';
+        html_code +=
+            '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+        html_code += '    </div>';
+        html_code += '    <div class="col-span-1 sm:col-span-1">';
+        html_code += '        <button';
+        html_code +=
+            '            class="mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 remove_row"';
+        html_code += '           type="button" id="' + count + '">X</button>';
+        html_code += '    </div>';
+        html_code += '</div>';
+
+        $('#add-order').append(html_code);
+    });
+    // }
+
+    //Remove Item Row
+    $(document).on('click', '.remove_row', function() {
+        var row_id = $(this).attr("id");
+        // var total_item_amount = $('#order_item_amount_ks' + row_id).val();
+        // var final_amount = $('#final_total_amt').text();
+        // var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
+        // $('#final_total_amt').text(result_amount);
+        $('#row_id_' + row_id).remove();
+        count--;
+        // $('#total_item').val(count);
+    });
+    //End Remove Item Row
+</script>
