@@ -31,53 +31,70 @@
                                         </div>
                                     </div>
 
-                                    <div class="grid grid-cols-6 gap-6" id="add-order">
-                                        <div class="col-span-1 sm:col-span-1">
-                                            <label for="product_name"
-                                                class="block text-sm text-center font-medium text-gray-700">Product
-                                                Name</label>
-                                            <input type="text" name="product_name" id="product_name"
-                                                autocomplete="product_name-name"
-                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
+                                    {{-- entry --}}
+                                    <div id="add-order">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-1 sm:col-span-1">
+                                                <label for="product_name"
+                                                    class="block text-sm text-center font-medium text-gray-700">Product
+                                                    Name</label>
+                                                <input type="text" name="product_name[]" id="product_name"
+                                                    autocomplete="product_name-name"
+                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
 
-                                        <div class="col-span-1 sm:col-span-1">
-                                            <label for="quantity"
-                                                class="block text-sm text-center font-medium text-gray-700">Quantity</label>
-                                            <input type="text" name="quantity" id="quantity" autocomplete="quantity"
-                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
+                                            <div class="col-span-1 sm:col-span-1">
+                                                <label for="quantity"
+                                                    class="block text-sm text-center font-medium text-gray-700">Quantity</label>
+                                                <input type="text" name="quantity[]" id="quantity"
+                                                    autocomplete="quantity"
+                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
 
-                                        <div class="col-span-1 sm:col-span-1">
-                                            <label for="unit_id"
-                                                class="block text-sm text-center font-medium text-gray-700">Unit</label>
-                                            <select id="unit_id" name="unit_id" autocomplete="unit_id"
-                                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                <option value="1">Kg</option>
-                                                <option value="2">Cbm</option>
-                                            </select>
-                                        </div>
+                                            <div class="col-span-1 sm:col-span-1">
+                                                <label for="unit_id"
+                                                    class="block text-sm text-center font-medium text-gray-700">Unit</label>
+                                                <select id="unit_id" name="unit_id[]" autocomplete="unit_id"
+                                                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                    <option value="1">Kg</option>
+                                                    <option value="2">Cbm</option>
+                                                </select>
+                                            </div>
 
-                                        <div class="col-span-1 sm:col-span-1">
-                                            <label for="unit_qty"
-                                                class="block text-sm text-center font-medium text-gray-700">Weight</label>
-                                            <input type="number" name="unit_qty" id="unit_qty" autocomplete="unit_qty"
-                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
+                                            <div class="col-span-1 sm:col-span-1">
+                                                <label for="unit_qty"
+                                                    class="block text-sm text-center font-medium text-gray-700">Weight</label>
+                                                <input type="number" name="unit_qty[]" id="unit_qty"
+                                                    autocomplete="unit_qty"
+                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
 
-                                        <div class="col-span-1 sm:col-span-1">
-                                            <label for="price"
-                                                class="block text-sm text-center font-medium text-gray-700">Price</label>
-                                            <input type="number" name="price" id="price" autocomplete="price"
-                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div class="col-span-1 sm:col-span-1">
-                                            <button
-                                                class="mt-5 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500"
-                                                id="add_btn" onclick="addFun()">Add</button>
+                                            <div class="col-span-1 sm:col-span-1">
+                                                <label for="price"
+                                                    class="block text-sm text-center font-medium text-gray-700">Price</label>
+                                                <input type="number" name="price[]" id="price" autocomplete="price"
+                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                            <div class="col-span-1 sm:col-span-1">
+                                                <button
+                                                    class="mt-5 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500"
+                                                    id="add_btn" type="button">Add</button>
+                                            </div>
                                         </div>
                                     </div>
+                                    {{-- end entry --}}
 
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6 sm:col-span-3">
+                                        </div>
+
+                                        <div class="col-span-3 sm:col-span-3">
+                                            Sub Total
+                                        </div>
+                                        <div class="col-span-3 sm:col-span-3">
+                                            <span id="final_total_amt"></span>
+                                        </div>
+                                    </div>
 
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6 sm:col-span-3">
@@ -139,6 +156,8 @@
                                 <button type="submit"
                                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
                             </div>
+                            <input type="hidden" name="total_item" id="total_item" value="1" />
+                            <input type="hidden" name="save_final_total_amt" id="save_final_total_amt" value="0" />
                         </form>
                     </div>
                 </div>
@@ -146,8 +165,81 @@
         </div>
     </div>
     <script>
-        function addFun() {
-            document.getElementById("add-order").html("<div>tetst</div>")
-        }
+        // function addFun() {
+        var count = 1;
+        $(document).on('click', '#add_row', function() {
+            count++;
+            $('#total_item').val(count);
+            var html_code = '';
+            html_code += '<div class="grid grid-cols-6 gap-6" id="row_id_' + count + '">';
+            html_code += '    <div class="col-span-1 sm:col-span-1">';
+            html_code += '        <label for="product_name"';
+            html_code += '            class="block text-sm text-center font-medium text-gray-700">Product';
+            html_code += '            Name</label>';
+            html_code += '        <input type="text" name="product_name[]" id="product_name"';
+            html_code += '            autocomplete="product_name-name"';
+            html_code +=
+                '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+            html_code += '    </div>';
+
+            html_code += '    <div class="col-span-1 sm:col-span-1">';
+            html_code += '        <label for="quantity"';
+            html_code += '            class="block text-sm text-center font-medium text-gray-700">Quantity</label>';
+            html_code += '        <input type="text" name="quantity[]" id="quantity" autocomplete="quantity"';
+            html_code +=
+                '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+            html_code += '    </div>';
+
+            html_code += '    <div class="col-span-1 sm:col-span-1">';
+            html_code += '        <label for="unit_id"';
+            html_code += '            class="block text-sm text-center font-medium text-gray-700">Unit</label>';
+            html_code += '        <select id="unit_id" name="unit_id[]" autocomplete="unit_id"';
+            html_code +=
+                '            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">';
+            html_code += '            <option value="1">Kg</option>';
+            html_code += '            <option value="2">Cbm</option>';
+            html_code += '        </select>';
+            html_code += '    </div>';
+
+            html_code += '    <div class="col-span-1 sm:col-span-1">';
+            html_code += '        <label for="unit_qty"';
+            html_code += '            class="block text-sm text-center font-medium text-gray-700">Weight</label>';
+            html_code += '        <input type="number" name="unit_qty[]" id="unit_qty"';
+            html_code += '            autocomplete="unit_qty"';
+            html_code +=
+                '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+            html_code += '    </div>';
+
+            html_code += '    <div class="col-span-1 sm:col-span-1">';
+            html_code += '        <label for="price"';
+            html_code += '            class="block text-sm text-center font-medium text-gray-700">Price</label>';
+            html_code += '        <input type="number" name="price[]" id="price" autocomplete="price"';
+            html_code +=
+                '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+            html_code += '    </div>';
+            html_code += '    <div class="col-span-1 sm:col-span-1">';
+            html_code += '        <button';
+            html_code +=
+                '            class="mt-5 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 remove_row"';
+            html_code += '           type="button" id="' + count + '">X</button>';
+            html_code += '    </div>';
+            html_code += '</div>';
+
+            $('#add-order').append(html_code);
+        });
+        // }
+
+        //Remove Item Row
+        $(document).on('click', '.remove_row', function() {
+            var row_id = $(this).attr("id");
+            var total_item_amount = $('#order_item_amount_ks' + row_id).val();
+            var final_amount = $('#final_total_amt').text();
+            var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
+            $('#final_total_amt').text(result_amount);
+            $('#row_id_' + row_id).remove();
+            count--;
+            $('#total_item').val(count);
+        });
+        //End Remove Item Row
     </script>
 </x-admin-app-layout>

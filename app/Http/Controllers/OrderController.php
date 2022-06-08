@@ -60,15 +60,22 @@ class OrderController extends Controller
                 'payment_type' => $data['payment_type'],
                 'created_by' => auth()->id(),
             ]);
-
-            $order->orderDetail()->create([
-                "product_name" => $data['product_name'],
-                "quantity" => $data['quantity'],
-                "unit_id" => $data['unit_id'],
-                "unit_qty" => $data['unit_qty'],
-                "price" => $data['price'],
-                "amount" => $data['price'] * $data['unit_qty'],
-            ]);
+            for ($i = 0; $i < request('total_item'); $i++) {
+                $data['invoice_id'] =  $invoice->id;
+                $data['tracking_code'] = request('order_item_tracking_code')[$i];
+                $data['volume_cbm'] = request('order_item_volume_cbm')[$i];
+                $data['weigh_kg'] = request('order_item_weight_kg')[$i];
+                $data['price'] = request('order_item_price')[$i];
+                $data['amount'] = request('order_item_amount_ks')[$i];
+                $order->orderDetail()->create([
+                    "product_name" => $data['product_name'],
+                    "quantity" => $data['quantity'],
+                    "unit_id" => $data['unit_id'],
+                    "unit_qty" => $data['unit_qty'],
+                    "price" => $data['price'],
+                    "amount" => $data['price'] * $data['unit_qty'],
+                ]);
+            }
         });
 
         return redirect()->route("admin.orders.index")->with('success', "Success");

@@ -43,35 +43,37 @@
                 @include('admin.layouts.footer2')
             </div>
         </div>
+    </div>
 
-        @yield('custom_script')
+    @yield('custom_script')
 
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" charset="utf-8"></script> --}}
-        <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
-        <script type="text/javascript">
-            /* Sidebar - Side navigation menu on mobile/responsive mode */
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" charset="utf-8"></script> --}}
+    {{-- <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script> --}}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript">
+        /* Sidebar - Side navigation menu on mobile/responsive mode */
 
-            function toggleNavbar(collapseID) {
-                // console.log("object");
-                document.getElementById(collapseID).classList.toggle("hidden");
-                document.getElementById(collapseID).classList.toggle("bg-white");
-                document.getElementById(collapseID).classList.toggle("m-2");
-                document.getElementById(collapseID).classList.toggle("py-3");
-                document.getElementById(collapseID).classList.toggle("px-6");
+        function toggleNavbar(collapseID) {
+            // console.log("object");
+            document.getElementById(collapseID).classList.toggle("hidden");
+            document.getElementById(collapseID).classList.toggle("bg-white");
+            document.getElementById(collapseID).classList.toggle("m-2");
+            document.getElementById(collapseID).classList.toggle("py-3");
+            document.getElementById(collapseID).classList.toggle("px-6");
+        }
+        /* Function for dropdowns */
+        function openDropdown(event, dropdownID) {
+            let element = event.target;
+            while (element.nodeName !== "A") {
+                element = element.parentNode;
             }
-            /* Function for dropdowns */
-            function openDropdown(event, dropdownID) {
-                let element = event.target;
-                while (element.nodeName !== "A") {
-                    element = element.parentNode;
-                }
-                var popper = Popper.createPopper(element, document.getElementById(dropdownID), {
-                    placement: "bottom-end"
-                });
-                document.getElementById(dropdownID).classList.toggle("hidden");
-                document.getElementById(dropdownID).classList.toggle("block");
-            }
-        </script>
+            var popper = Popper.createPopper(element, document.getElementById(dropdownID), {
+                placement: "bottom-end"
+            });
+            document.getElementById(dropdownID).classList.toggle("hidden");
+            document.getElementById(dropdownID).classList.toggle("block");
+        }
+    </script>
 </body>
 
 </html>
