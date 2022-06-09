@@ -34,7 +34,7 @@
                                             :
                                         </label>
                                         <label class="text-sm font-medium text-gray-700 ml-3">
-                                            {{ $data->customer->name }}
+                                            {{ optional($data->customer)->name }}
                                         </label>
                                     </div>
                                 </div>

@@ -31,6 +31,7 @@ class UpdateOrderRequest extends FormRequest
             'delivery_fee' => 'nullable',
             'payment_type' => 'required',
             'currency_exchange_rate' => 'nullable',
+            'status' => 'required',
 
             // orderd details data
             'product_name.*' => 'required',

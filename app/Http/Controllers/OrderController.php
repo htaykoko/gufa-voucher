@@ -57,6 +57,7 @@ class OrderController extends Controller
                 "china_delivery_fee" => $data['china_delivery_fee'],
                 "currency_exchange_rate" => $data['currency_exchange_rate'],
                 'payment_type' => $data['payment_type'],
+                'status' => 0,
                 'created_by' => auth()->id(),
             ]);
             $sub_total = 0;
@@ -78,7 +79,7 @@ class OrderController extends Controller
             ]);
             return $order;
         });
-        return redirect()->route("admin.orders.show", $order->id)->with('success', "Success");
+        return redirect()->route("admin.orders.show", $order->id)->with("success", config('messages.createSuccess'));
     }
 
     /**
@@ -147,7 +148,7 @@ class OrderController extends Controller
                 'updated_by' => auth()->id(),
             ]);
         });
-        return redirect()->route("admin.orders.show", $order->id)->with('success', "Success");
+        return redirect()->route("admin.orders.show", $order->id)->with("success", config('messages.updateSuccess'));
     }
 
     /**
