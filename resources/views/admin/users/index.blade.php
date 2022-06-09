@@ -51,8 +51,20 @@
                                         {{ $user->email }}</td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <button><i class="fas fa-trash text-red-500 mr-4"></i></button>
-                                        <button><i class="fas fa-eye text-red-500 mr-4"></i></button>
+                                        <a href="{{ route('admin.users.show', $user->id) }}"
+                                            class="justify-center px-2 py-1 border border-transparent shadow-sm rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                                            <i class="fas fa-trash text-red-500 mr-4"></i></a>
+                                        <a href="{{ route('admin.users.edit', $user->id) }}"
+                                            class="justify-center px-2 py-1 border border-transparent shadow-sm rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                                            <i class="fas fa-pencil text-red-500 mr-4"></i></a>
+                                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button
+                                                class="justify-center px-2 py-1 border border-transparent shadow-sm rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><i
+                                                    class="fas fa-eye text-red-500 mr-4"
+                                                    onclick="return confirm('Are You Sure?');">Delete</i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
