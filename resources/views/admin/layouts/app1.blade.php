@@ -19,7 +19,7 @@
     {{-- fontawesome --}}
     <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}" defer />
 
-    <title>Dashboard | Tailwind Starter Kit by Creative Tim</title>
+    <title>Gufa Mall</title>
 </head>
 
 <body class="text-blueGray-700 antialiased">
