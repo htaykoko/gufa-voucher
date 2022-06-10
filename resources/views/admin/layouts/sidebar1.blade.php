@@ -77,7 +77,7 @@
             <form class="mt-6 mb-4 md:hidden">
                 <div class="mb-3 pt-0">
                     <input type="text" placeholder="Search"
-                        class="border-0 px-3 py-2 h-12 border border-solid  border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal" />
+                        class="border-0 px-3 py-2 h-12 border-solid  border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal" />
                 </div>
             </form>
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
@@ -91,6 +91,12 @@
                         href="{{ route('admin.customers.index') }}"><i
                             class="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>
                         Customer</a>
+                </li>
+                <li class="items-center">
+                    <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                        href="{{ route('admin.owner_addresses.edit', 1) }}"><i
+                            class="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>
+                        Address</a>
                 </li>
                 <li class="items-center">
                     <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"

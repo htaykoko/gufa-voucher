@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OwnerAddressController;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware('guest')->group(function () {
@@ -59,5 +60,8 @@ Route::prefix('admin')->name("admin.")->group(function () {
     Route::resource("order_details", OrderDetailController::class);
 
     Route::resource("users", UserController::class);
+
+    Route::resource("owner_addresses", OwnerAddressController::class);
+
     // });
 });
