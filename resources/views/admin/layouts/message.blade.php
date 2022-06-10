@@ -95,7 +95,7 @@
 @endif
 
 {{-- validation error --}}
-@if ($errors->any())
+{{-- @if ($errors->any())
     <div class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">
         <ul>
             @foreach ($errors->all() as $error)
@@ -103,4 +103,4 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}

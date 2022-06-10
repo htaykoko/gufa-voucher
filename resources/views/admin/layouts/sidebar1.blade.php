@@ -92,12 +92,7 @@
                             class="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>
                         Customer</a>
                 </li>
-                <li class="items-center">
-                    <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                        href="{{ route('admin.owner_addresses.edit', 1) }}"><i
-                            class="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>
-                        Address</a>
-                </li>
+
                 <li class="items-center">
                     <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                         href="{{ route('admin.orders.index') }}"><i
@@ -109,6 +104,13 @@
                         href="{{ route('admin.users.index') }}"><i
                             class="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>
                         User</a>
+                </li>
+
+                <li class="items-center">
+                    <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                        href="{{ route('admin.owner_addresses.edit', 1) }}"><i
+                            class="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>
+                        Address</a>
                 </li>
 
             </ul>

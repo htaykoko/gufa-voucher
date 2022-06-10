@@ -15,7 +15,8 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="date"
                                                 class="block text-sm font-medium text-gray-700">Date</label>
-                                            <input type="date" name="date" id="date" autocomplete="given-name"
+                                            <input type="date" name="date" value="{{ old('date') }}" id="date"
+                                                autocomplete="given-name"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
@@ -24,7 +25,9 @@
                                             <select id="customer_id" name="customer_id" autocomplete="customer_id"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 @foreach ($customers as $customer)
-                                                    <option value="{{ $customer->id }}">{{ $customer->name }}
+                                                    <option value="{{ $customer->id }}"
+                                                        {{ $customer->id == old('customer_id') }}>
+                                                        {{ $customer->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -84,7 +87,7 @@
                                     </div>
                                     {{-- end entry --}}
 
-                                    <div class="grid grid-cols-6 gap-6">
+                                    {{-- <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6 sm:col-span-3">
                                         </div>
 
@@ -94,7 +97,7 @@
                                         <div class="col-span-1 sm:col-span-1">
                                             <span id="final_total_amt"></span>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6 sm:col-span-3">
@@ -102,7 +105,8 @@
                                                 class="block text-sm font-medium text-gray-700">China
                                                 Delivery
                                                 Fee</label>
-                                            <input type="number" name="china_delivery_fee" id="china_delivery_fee"
+                                            <input type="number" name="china_delivery_fee"
+                                                value="{{ old('china_delivery_fee') }}" id="china_delivery_fee"
                                                 autocomplete="china_delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
@@ -110,8 +114,8 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="custom_fee"
                                                 class="block text-sm font-medium text-gray-700">Custom Fee</label>
-                                            <input type="number" name="custom_fee" id="custom_fee"
-                                                autocomplete="custom_fee"
+                                            <input type="number" name="custom_fee" value="{{ old('custom_fee') }}"
+                                                id="custom_fee" autocomplete="custom_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                     </div>
@@ -121,8 +125,8 @@
                                             <label for="delivery_fee"
                                                 class="block text-sm font-medium text-gray-700">Delivery
                                                 Fee</label>
-                                            <input type="number" name="delivery_fee" id="delivery_fee"
-                                                autocomplete="delivery_fee"
+                                            <input type="number" name="delivery_fee" value="{{ old('delivery_fee') }}"
+                                                id="delivery_fee" autocomplete="delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                     </div>
@@ -132,12 +136,14 @@
                                             <label for="payment_type"
                                                 class="block text-sm font-medium text-gray-700">Payment
                                                 Type</label>
-                                            <select id="payment_type" name="payment_type"
-                                                autocomplete="payment_type-name"
+                                            <select id="payment_type" name="payment_type" autocomplete="payment_type"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option>Select</option>
-                                                <option value="1">Cash</option>
-                                                <option value="2">Banking</option>
+                                                <option value="1" {{ old('payment_type') ? 'selected' : '' }}>Cash
+                                                </option>
+                                                <option value="2" {{ old('payment_type') == 2 ? 'selected' : '' }}>
+                                                    Banking
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
@@ -145,8 +151,22 @@
                                                 class="block text-sm font-medium text-gray-700">Currency Exchange
                                                 Rate</label>
                                             <input type="number" name="currency_exchange_rate"
+                                                value="{{ old('currency_exchange_rate') }}"
                                                 id="currency_exchange_rate" autocomplete="currency_exchange_rate"
-                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            <select id="currency_exchange_unit" name="currency_exchange_unit"
+                                                autocomplete="currency_exchange_unit"
+                                                class="mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                <option>Select</option>
+                                                <option value="yum"
+                                                    {{ old('currency_exchange_rate') == 'Yum' ? 'selected' : '' }}>
+                                                    Yum
+                                                </option>
+                                                <option value="kyat"
+                                                    {{ old('currency_exchange_rate') == 'Kyat' ? 'selected' : '' }}>
+                                                    Kyat
+                                                </option>
+                                            </select>
                                         </div>
 
                                     </div>

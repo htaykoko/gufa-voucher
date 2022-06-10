@@ -30,7 +30,8 @@ class StoreOrderRequest extends FormRequest
             'custom_fee' => 'nullable',
             'delivery_fee' => 'nullable',
             'payment_type' => 'required',
-            'currency_exchange_rate' => 'nullable',
+            'currency_exchange_rate' => 'required_if:payment_type,2',
+            'currency_exchange_unit' => 'required_with:currency_exchange_rate,',
 
             // orderd details data
             'product_name.*' => 'required',

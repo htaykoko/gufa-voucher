@@ -30,6 +30,7 @@ class CreateOrdersTable extends Migration
 
             $table->string("payment_type")->nullable(); // cash or banking
             $table->double("currency_exchange_rate")->nullable();
+            $table->string("currency_exchange_unit")->default("yum"); //kyaw or yum
 
             $table->string("status")->default(1);
             $table->string("created_by")->nullable();

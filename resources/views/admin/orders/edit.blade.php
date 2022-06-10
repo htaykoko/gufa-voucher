@@ -31,18 +31,18 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="date"
                                                 class="block text-sm font-medium text-gray-700">Date</label>
-                                            <input type="date" name="date" value="{{ $data->date }}" id="date"
-                                                autocomplete="given-name"
+                                            <input type="date" name="date" value="{{ old('date', $data->date) }}"
+                                                id="date" autocomplete="given-name"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="customer_id"
                                                 class="block text-sm font-medium text-gray-700">Customer</label>
-                                            <select id="customer_id" name="customer_id" autocomplete="customer_id-name"
+                                            <select id="customer_id" name="customer_id" autocomplete="customer_id"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 @foreach ($customers as $customer)
                                                     <option value="{{ $customer->id }}"
-                                                        {{ $customer->id == $data->customer_id ? 'selected' : '' }}>
+                                                        {{ $customer->id == old('customer_id', $data->customer_id) ? 'selected' : '' }}>
                                                         {{ $customer->name }}
                                                     </option>
                                                 @endforeach
@@ -139,7 +139,8 @@
                                                 class="block text-sm font-medium text-gray-700">China
                                                 Delivery
                                                 Fee</label>
-                                            <input type="number" value="{{ $data->china_delivery_fee }}"
+                                            <input type="number"
+                                                value="{{ old('china_delivery_fee', $data->china_delivery_fee) }}"
                                                 name="china_delivery_fee" id="china_delivery_fee"
                                                 autocomplete="china_delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -148,8 +149,8 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="custom_fee"
                                                 class="block text-sm font-medium text-gray-700">Custom Fee</label>
-                                            <input type="number" value="{{ $data->custom_fee }}" name="custom_fee"
-                                                id="custom_fee" autocomplete="custom_fee"
+                                            <input type="number" value="{{ old('custom_fee', $data->custom_fee) }}"
+                                                name="custom_fee" id="custom_fee" autocomplete="custom_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                     </div>
@@ -163,9 +164,11 @@
                                                 autocomplete="payment_type-name"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option>Select</option>
-                                                <option value="1" {{ $data->payment_type == 1 ? 'selected' : '' }}>
+                                                <option value="1"
+                                                    {{ $data->payment_type == old('payment_type', 1) ? 'selected' : '' }}>
                                                     Cash</option>
-                                                <option value="2" {{ $data->payment_type == 1 ? 'selected' : '' }}>
+                                                <option value="2"
+                                                    {{ $data->payment_type == old('payment_type', 2) ? 'selected' : '' }}>
                                                     Banking</option>
                                             </select>
                                         </div>
@@ -173,10 +176,24 @@
                                             <label for="currency_exchange_rate"
                                                 class="block text-sm font-medium text-gray-700">Currency Exchange
                                                 Rate</label>
-                                            <input type="number" value="{{ $data->currency_exchange_rate }}"
+                                            <input type="number"
+                                                value="{{ old('currency_exchange_rate', $data->currency_exchange_rate) }}"
                                                 name="currency_exchange_rate" id="currency_exchange_rate"
                                                 autocomplete="currency_exchange_rate"
-                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            <select id="currency_exchange_unit" name="currency_exchange_unit"
+                                                autocomplete="currency_exchange_unit"
+                                                class="mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                <option>Select</option>
+                                                <option value="yum"
+                                                    {{ old('currency_exchange_rate') == old('currency_exchange_unit', 'Yum') ? 'selected' : '' }}>
+                                                    Yum
+                                                </option>
+                                                <option value="kyat"
+                                                    {{ old('currency_exchange_rate') == old('currency_exchange_unit', 'Kyat') ? 'selected' : '' }}>
+                                                    Kyat
+                                                </option>
+                                            </select>
                                         </div>
 
                                     </div>
@@ -185,7 +202,8 @@
                                             <label for="delivery_fee"
                                                 class="block text-sm font-medium text-gray-700">Delivery
                                                 Fee</label>
-                                            <input type="number" value="{{ $data->delivery_fee }}"
+                                            <input type="number"
+                                                value="{{ old('delivery_fee', $data->delivery_fee) }}"
                                                 name="delivery_fee" id="delivery_fee" autocomplete="delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
@@ -195,9 +213,9 @@
                                                 Status</label>
                                             <select id="status" name="status" autocomplete="status"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                <option value="1" {{ $data->status ? 'selected' : '' }}>
+                                                <option value="1" {{ $data->status == 1 ? 'selected' : '' }}>
                                                     Paid</option>
-                                                <option value="0" {{ $data->status == 1 ? 'selected' : '' }}>
+                                                <option value="0" {{ $data->status == 0 ? 'selected' : '' }}>
                                                     UnPaid</option>
                                             </select>
                                         </div>

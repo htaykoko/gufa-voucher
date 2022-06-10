@@ -5,7 +5,7 @@
             @include('admin.layouts.message')
             @if (showSegment(2, 'dashboard'))
                 <!-- Card stats -->
-                <div class="flex flex-wrap">
+                {{-- <div class="flex flex-wrap">
                     <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
                         <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                             <div class="flex-auto p-4">
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             @endif
         </div>
     </div>

@@ -23,18 +23,41 @@
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div class="grid grid-cols-3 gap-6">
-                                    <div class="col-span-2 sm:col-span-2">
-                                        <label class="text-sm font-bold text-gray-700">Date : </label>
+                                    <div class="col-span-1 sm:col-span-1">
+                                        <label class="text-sm font-bold text-gray-700">Voucher ID : </label>
                                         <label class="text-sm font-medium text-gray-700 ml-3">
-                                            {{ $data->date }}
+                                            {{ $data->code }}
                                         </label>
                                     </div>
-                                    <div class="col-span-1 sm:col-span-1">
+                                    <div class="col-span-1 sm:col-span-1 text-center">
+                                        <label class="text-sm font-bold text-gray-700">Date : </label>
+                                        <label class="text-sm font-medium text-gray-700 ml-3">
+                                            {{ date('d-M-Y', strtotime($data->date)) }}
+                                        </label>
+                                    </div>
+                                    <div class="col-span-1 sm:col-span-1 text-right">
                                         <label for="customer_id" class="text-sm font-bold text-gray-700">Customer Name
                                             :
                                         </label>
                                         <label class="text-sm font-medium text-gray-700 ml-3">
                                             {{ optional($data->customer)->name }}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-3 gap-6">
+                                    <div class="col-span-2 sm:col-span-2">
+                                        <label class="text-sm font-bold text-gray-700">Address : </label>
+                                        <label class="text-sm font-medium text-gray-700 ml-3">
+                                            {{ $address->address1 }}
+                                        </label>
+                                    </div>
+                                    <div class="col-span-1 sm:col-span-1 text-right">
+                                        <label for="customer_id" class="text-sm font-bold text-gray-700">Address
+                                            :
+                                        </label>
+                                        <label class="text-sm font-medium text-gray-700 ml-3">
+                                            {{ $address->address2 }}
                                         </label>
                                     </div>
                                 </div>
@@ -91,7 +114,7 @@
 
                                         <div class="col-span-1 sm:col-span-1">
                                             <label class="block text-sm text-center font-medium text-gray-700">
-                                                {{ $item->unit_id ? 'Kg' : 'Cbm' }}
+                                                {{ $item->unit_id == '1' ? 'Kg' : 'Cbm' }}
                                             </label>
                                         </div>
 
@@ -187,7 +210,7 @@
                                     </div>
                                     <div class="col-span-1 sm:col-span-1">
                                         <label class="text-sm font-bold text-gray-700">Currency Exchange
-                                            Rate : </label>
+                                            Rate({{ $data->currency_exchange_unit }}) : </label>
                                     </div>
                                     <div class="col-span-1 sm:col-span-1">
                                         <label class="block text-sm font-bold text-center text-gray-700">

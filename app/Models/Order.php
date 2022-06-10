@@ -12,6 +12,11 @@ class Order extends Model
     use SoftDeletes;
     protected $guarded = [];
 
+    public function scopeFilter($query, $filters)
+    {
+        $filters->apply($query);
+    }
+
     /**
      * Get all of the orderDetail for the Order
      *

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\OrderFilter;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Customer;
+use App\Models\OwnerAddress;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -15,9 +17,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(OrderFilter $filter)
     {
-        $order = Order::paginate(10);
+        $order = Order::filter($filter)->paginate(10);
         return view('admin.orders.index', [
             'orders' => $order
         ]);
@@ -46,7 +48,6 @@ class OrderController extends Controller
     {
         $data = $request->validated();
         $order = DB::transaction(function () use ($data) {
-            // dd($data);
             $order = Order::create([
                 'code' => str_pad(date("dmY") . "-" . $this->generateOrderCode(), 14, 0, STR_PAD_LEFT),
                 'customer_id' => $data['customer_id'],
@@ -92,7 +93,8 @@ class OrderController extends Controller
     {
         // dd($order->with('orderDetail', 'customer'));
         return view('admin.orders.show', [
-            'data' => $order
+            'data' => $order,
+            'address' => OwnerAddress::first()
         ]);
     }
 
@@ -138,6 +140,7 @@ class OrderController extends Controller
             $order->update([
                 'customer_id' => $data['customer_id'],
                 'date' => $data['date'],
+                'status' => $data['status'],
                 "sub_totals" => $sub_total,
                 "net_total" => ($sub_total + $data['delivery_fee'] + $data['custom_fee']),
                 'delivery_fee' => $data['delivery_fee'],

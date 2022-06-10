@@ -160,4 +160,10 @@ return [
 
     'attributes' => [],
 
+    'values' => [
+        'payment_type' => [
+            '2' => 'Banking'
+        ],
+    ],
+
 ];
