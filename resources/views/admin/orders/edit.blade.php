@@ -156,17 +156,6 @@
 
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6 sm:col-span-3">
-                                            <label for="delivery_fee"
-                                                class="block text-sm font-medium text-gray-700">Delivery
-                                                Fee</label>
-                                            <input type="number" value="{{ $data->delivery_fee }}"
-                                                name="delivery_fee" id="delivery_fee" autocomplete="delivery_fee"
-                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-
-                                    <div class="grid grid-cols-6 gap-6">
-                                        <div class="col-span-6 sm:col-span-3">
                                             <label for="payment_type"
                                                 class="block text-sm font-medium text-gray-700">Payment
                                                 Type</label>
@@ -190,6 +179,28 @@
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
 
+                                    </div>
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="delivery_fee"
+                                                class="block text-sm font-medium text-gray-700">Delivery
+                                                Fee</label>
+                                            <input type="number" value="{{ $data->delivery_fee }}"
+                                                name="delivery_fee" id="delivery_fee" autocomplete="delivery_fee"
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+
+                                        <div class="col-span-6 sm:col-span-3">
+                                            <label for="status" class="block text-sm font-medium text-gray-700">Order
+                                                Status</label>
+                                            <select id="status" name="status" autocomplete="status"
+                                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                <option value="1" {{ $data->status ? 'selected' : '' }}>
+                                                    Paid</option>
+                                                <option value="0" {{ $data->status == 1 ? 'selected' : '' }}>
+                                                    UnPaid</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

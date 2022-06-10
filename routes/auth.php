@@ -47,17 +47,17 @@ Route::prefix('admin')->name("admin.")->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    // Route::middleware('auth')->group(function () {
+    Route::middleware('auth')->group(function () {
 
-    Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
+        Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+        Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    Route::resource("customers", CustomerController::class);
+        Route::resource("customers", CustomerController::class);
 
-    Route::resource("orders", OrderController::class);
+        Route::resource("orders", OrderController::class);
 
-    Route::resource("order_details", OrderDetailController::class);
+        Route::resource("order_details", OrderDetailController::class);
 
     Route::resource("users", UserController::class);
 
