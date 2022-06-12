@@ -30,7 +30,7 @@ class UpdateOrderRequest extends FormRequest
             'custom_fee' => 'nullable|numeric|gt:0',
             'delivery_fee' => 'nullable|numeric|gt:0',
             'payment_type' => 'required',
-            'currency_exchange_rate' => 'required_if:payment_type,2|numeric|gt:0',
+            'currency_exchange_rate' => 'required_if:payment_type,2|nullable|numeric|gt:0',
             'currency_exchange_unit' => 'required_with:currency_exchange_rate,',
             'status' => 'required',
 
