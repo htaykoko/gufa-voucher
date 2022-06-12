@@ -71,7 +71,7 @@
 
 <body class="text-gray-800 antialiased">
     <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 ">
-        <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+        {{-- <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
             <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                 <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
                     href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation">Tailwind Starter
@@ -119,7 +119,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> --}}
     </nav>
     <main>
         <section class="absolute w-full h-full">
@@ -189,12 +189,12 @@
                         <div class="w-full md:w-4/12 px-4">
                             <div class="text-sm text-white font-semibold py-1">
                                 Copyright © 2019
-                                <a href="https://www.creative-tim.com"
-                                    class="text-white hover:text-gray-400 text-sm font-semibold py-1">Creative Tim</a>
+                                <a href="{{ route('admin.dashboard') }}"
+                                    class="text-white hover:text-gray-400 text-sm font-semibold py-1">Gufa Mall</a>
                             </div>
                         </div>
                         <div class="w-full md:w-8/12 px-4">
-                            <ul class="flex flex-wrap list-none md:justify-end  justify-center">
+                            {{-- <ul class="flex flex-wrap list-none md:justify-end  justify-center">
                                 <li>
                                     <a href="https://www.creative-tim.com"
                                         class="text-white hover:text-gray-400 text-sm font-semibold block py-1 px-3">Creative
@@ -214,7 +214,7 @@
                                         class="text-white hover:text-gray-400 text-sm font-semibold block py-1 px-3">MIT
                                         License</a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>

@@ -39,8 +39,7 @@
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-1 sm:col-span-1">
                                                 <label for="product_name"
-                                                    class="block text-sm text-center font-medium text-gray-700">Product
-                                                    Name</label>
+                                                    class="block text-sm text-center font-medium text-gray-700">Code</label>
                                                 <input type="text" name="product_name[]" id="product_name"
                                                     autocomplete="product_name-name"
                                                     class="product_name mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -67,7 +66,7 @@
                                             <div class="col-span-1 sm:col-span-1">
                                                 <label for="unit_qty"
                                                     class="block text-sm text-center font-medium text-gray-700">Weight</label>
-                                                <input type="number" name="unit_qty[]" id="unit_qty"
+                                                <input type="text" name="unit_qty[]" id="unit_qty"
                                                     autocomplete="unit_qty"
                                                     class="unit_qty mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             </div>
@@ -75,7 +74,7 @@
                                             <div class="col-span-1 sm:col-span-1">
                                                 <label for="price"
                                                     class="block text-sm text-center font-medium text-gray-700">Price</label>
-                                                <input type="number" name="price[]" id="price" autocomplete="price"
+                                                <input type="text" name="price[]" id="price" autocomplete="price"
                                                     class="price mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             </div>
                                             <div class="col-span-1 sm:col-span-1">
@@ -93,7 +92,7 @@
                                                 class="block text-sm font-medium text-gray-700">China
                                                 Delivery
                                                 Fee</label>
-                                            <input type="number" name="china_delivery_fee"
+                                            <input type="text" name="china_delivery_fee"
                                                 value="{{ old('china_delivery_fee') }}" id="china_delivery_fee"
                                                 autocomplete="china_delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -102,7 +101,7 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="custom_fee"
                                                 class="block text-sm font-medium text-gray-700">Custom Fee</label>
-                                            <input type="number" name="custom_fee" value="{{ old('custom_fee') }}"
+                                            <input type="text" name="custom_fee" value="{{ old('custom_fee') }}"
                                                 id="custom_fee" autocomplete="custom_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
@@ -113,7 +112,7 @@
                                             <label for="delivery_fee"
                                                 class="block text-sm font-medium text-gray-700">Delivery
                                                 Fee</label>
-                                            <input type="number" name="delivery_fee" value="{{ old('delivery_fee') }}"
+                                            <input type="text" name="delivery_fee" value="{{ old('delivery_fee') }}"
                                                 id="delivery_fee" autocomplete="delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
@@ -138,7 +137,7 @@
                                             <label for="currency_exchange_rate"
                                                 class="block text-sm font-medium text-gray-700">Currency Exchange
                                                 Rate</label>
-                                            <input type="number" name="currency_exchange_rate"
+                                            <input type="text" name="currency_exchange_rate"
                                                 value="{{ old('currency_exchange_rate') }}"
                                                 id="currency_exchange_rate" autocomplete="currency_exchange_rate"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -205,14 +204,14 @@
         html_code += '    </div>';
 
         html_code += '    <div class="col-span-1 sm:col-span-1">';
-        html_code += '        <input type="number" name="unit_qty[]" id="unit_qty"';
+        html_code += '        <input type="text" name="unit_qty[]" id="unit_qty"';
         html_code += '            autocomplete="unit_qty"';
         html_code +=
             '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
         html_code += '    </div>';
 
         html_code += '    <div class="col-span-1 sm:col-span-1">';
-        html_code += '        <input type="number" name="price[]" id="price" autocomplete="price"';
+        html_code += '        <input type="text" name="price[]" id="price" autocomplete="price"';
         html_code +=
             '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
         html_code += '    </div>';

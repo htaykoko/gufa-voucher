@@ -53,8 +53,8 @@
                                     {{-- entry --}}
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-1 sm:col-span-1">
-                                            <label class="block text-sm text-center font-bold text-gray-700">Product
-                                                Name</label>
+                                            <label
+                                                class="block text-sm text-center font-bold text-gray-700">Code</label>
                                             <label>
                                         </div>
                                         <div class="col-span-1 sm:col-span-1">
@@ -108,14 +108,14 @@
                                                 </div>
 
                                                 <div class="col-span-1 sm:col-span-1">
-                                                    <input type="number" name="unit_qty[]"
+                                                    <input type="text" name="unit_qty[]"
                                                         value="{{ $item->unit_qty }}" id="unit_qty"
                                                         autocomplete="unit_qty"
                                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                 </div>
 
                                                 <div class="col-span-1 sm:col-span-1">
-                                                    <input type="number" name="price[]" value="{{ $item->price }}"
+                                                    <input type="text" name="price[]" value="{{ $item->price }}"
                                                         id="price" autocomplete="price"
                                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                 </div>
@@ -139,7 +139,7 @@
                                                 class="block text-sm font-medium text-gray-700">China
                                                 Delivery
                                                 Fee</label>
-                                            <input type="number"
+                                            <input type="text"
                                                 value="{{ old('china_delivery_fee', $data->china_delivery_fee) }}"
                                                 name="china_delivery_fee" id="china_delivery_fee"
                                                 autocomplete="china_delivery_fee"
@@ -149,7 +149,7 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="custom_fee"
                                                 class="block text-sm font-medium text-gray-700">Custom Fee</label>
-                                            <input type="number" value="{{ old('custom_fee', $data->custom_fee) }}"
+                                            <input type="text" value="{{ old('custom_fee', $data->custom_fee) }}"
                                                 name="custom_fee" id="custom_fee" autocomplete="custom_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
@@ -176,7 +176,7 @@
                                             <label for="currency_exchange_rate"
                                                 class="block text-sm font-medium text-gray-700">Currency Exchange
                                                 Rate</label>
-                                            <input type="number"
+                                            <input type="text"
                                                 value="{{ old('currency_exchange_rate', $data->currency_exchange_rate) }}"
                                                 name="currency_exchange_rate" id="currency_exchange_rate"
                                                 autocomplete="currency_exchange_rate"
@@ -202,8 +202,7 @@
                                             <label for="delivery_fee"
                                                 class="block text-sm font-medium text-gray-700">Delivery
                                                 Fee</label>
-                                            <input type="number"
-                                                value="{{ old('delivery_fee', $data->delivery_fee) }}"
+                                            <input type="text" value="{{ old('delivery_fee', $data->delivery_fee) }}"
                                                 name="delivery_fee" id="delivery_fee" autocomplete="delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
@@ -267,14 +266,14 @@
         html_code += '    </div>';
 
         html_code += '    <div class="col-span-1 sm:col-span-1">';
-        html_code += '        <input type="number" name="unit_qty[]" id="unit_qty"';
+        html_code += '        <input type="text" name="unit_qty[]" id="unit_qty"';
         html_code += '            autocomplete="unit_qty"';
         html_code +=
             '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
         html_code += '    </div>';
 
         html_code += '    <div class="col-span-1 sm:col-span-1">';
-        html_code += '        <input type="number" name="price[]" id="price" autocomplete="price"';
+        html_code += '        <input type="text" name="price[]" id="price" autocomplete="price"';
         html_code +=
             '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
         html_code += '    </div>';

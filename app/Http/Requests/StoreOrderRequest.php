@@ -26,19 +26,19 @@ class StoreOrderRequest extends FormRequest
         return [
             'customer_id' => 'required',
             'date' => 'required',
-            'china_delivery_fee' => 'nullable',
-            'custom_fee' => 'nullable',
-            'delivery_fee' => 'nullable',
+            'china_delivery_fee' => 'nullable|numeric|gt:0|numeric|gt:0',
+            'custom_fee' => 'nullable|numeric|gt:0',
+            'delivery_fee' => 'nullable|numeric|gt:0',
             'payment_type' => 'required',
-            'currency_exchange_rate' => 'required_if:payment_type,2',
+            'currency_exchange_rate' => 'required_if:payment_type,2|numeric|gt:0',
             'currency_exchange_unit' => 'required_with:currency_exchange_rate,',
 
             // orderd details data
             'product_name.*' => 'required',
-            'quantity.*' => 'required',
+            'quantity.*' => 'required|numeric|gt:0',
             'unit_id.*' => 'required',
-            'unit_qty.*' => 'required',
-            'price.*' => 'required',
+            'unit_qty.*' => 'required|numeric|gt:0',
+            'price.*' => 'required|numeric|gt:0',
         ];
     }
 }

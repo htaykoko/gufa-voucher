@@ -104,7 +104,7 @@
                                         {{ $order->code }}</td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href="{{ route('admin.') }}">{{ $order->code }}</a>
+                                        <a href="{{ route('admin.') }}">{{ $order->product_name }}</a>
                                     </td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">

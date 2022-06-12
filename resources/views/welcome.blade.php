@@ -24,8 +24,7 @@
             <div class="flex -mx-4 items-center justify-between relative">
                 <div class="px-4 w-60 max-w-full">
                     <a href="javascript:void(0)" class="w-full block py-5">
-                        <img src="https://cdn.tailgrids.com/1.0/assets/images/logo/logo.svg" alt="logo"
-                            class="w-full" />
+                        <img src="{{ asset('images/gufa_logo.jpg') }}" alt="logo" class=" w-20 h-20" />
                     </a>
                 </div>
                 <div class="flex px-4 justify-between items-center w-full">
@@ -114,7 +113,7 @@
                         </nav>
                     </div>
                     <div class="sm:flex justify-end hidden pr-16 lg:pr-0">
-                        <a href="javascript:void(0)"
+                        <a href="{{ route('admin.login') }}"
                             class="
                   text-base
                   font-medium
@@ -125,7 +124,7 @@
                 ">
                             Login
                         </a>
-                        <a href="javascript:void(0)"
+                        <a href="{{ route('admin.login') }}"
                             class="
                   text-base
                   font-medium

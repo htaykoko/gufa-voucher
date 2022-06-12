@@ -23,12 +23,12 @@
                         <div class="flex flex-wrap items-center">
                             <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                                 <h3 class="font-semibold text-base text-blueGray-700 text-center">
-                                    Gufa Mall
+                                    GUFA LOGISTICS CHINA TO MYANMAR
                                 </h3>
                             </div>
                             <div class="relative px-4 text-sm text-right">
                                 <img src="{{ asset('images/gufa_logo.jpg') }}"
-                                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase border-b rounded outline-none focus:outline-none mr-1 mb-1"
+                                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase border-b rounded outline-none focus:outline-none w-16 h-16"
                                     type="button" style="transition:all .15s ease" />
                             </div>
                         </div>
@@ -82,8 +82,8 @@
                                     {{-- entry --}}
                                     <div class="grid grid-cols-6 gap-6 border-b">
                                         <div class="col-span-1 sm:col-span-1">
-                                            <label class="block text-sm text-center font-bold text-gray-700">Product
-                                                Name</label>
+                                            <label
+                                                class="block text-sm text-center font-bold text-gray-700">Code</label>
                                             <label>
                                         </div>
                                         <div class="col-span-1 sm:col-span-1">

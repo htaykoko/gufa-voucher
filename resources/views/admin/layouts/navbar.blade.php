@@ -96,18 +96,11 @@
                         </nav>
                     </div>
                     <div class="sm:flex justify-end hidden pr-16 lg:pr-0">
-                        <a href="javascript:void(0)"
-                            class="
-                  text-base
-                  font-medium
-                  text-dark
-                  hover:text-primary
-                  py-3
-                  px-7
-                ">
+                        <a href="{{ route('admin.login') }}"
+                            class="text-base font-medium text-dark hover:text-primary py-3 px-7">
                             Login
                         </a>
-                        <a href="javascript:void(0)"
+                        <a href="{{ route('admin.login') }}"
                             class="
                   text-base
                   font-medium

@@ -113,6 +113,16 @@
                         Address</a>
                 </li>
 
+                <li class="items-center">
+                    <form method="POST" action="{{ route('admin.logout') }}">
+                        @csrf
+                        <button class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                            onclick="event.preventDefault();
+                                                this.closest('form').submit();"><i
+                                class="fas fa-long-arrow-alt-left text-blueGray-400 mr-2 text-sm"></i>
+                            Logout</button>
+                    </form>
+                </li>
             </ul>
             <hr class="my-4 md:min-w-full" />
 
