@@ -147,6 +147,7 @@ class OrderController extends Controller
                 "custom_fee" => $data['custom_fee'],
                 "china_delivery_fee" => $data['china_delivery_fee'],
                 "currency_exchange_rate" => $data['currency_exchange_rate'],
+                "currency_exchange_unit" => $data['currency_exchange_unit'],
                 'payment_type' => $data['payment_type'],
                 'updated_by' => auth()->id(),
             ]);

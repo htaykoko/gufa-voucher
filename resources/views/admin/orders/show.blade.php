@@ -28,7 +28,7 @@
                             </div>
                             <div class="relative px-4 text-sm text-right">
                                 <img src="{{ asset('images/gufa_logo.jpg') }}"
-                                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase border-b rounded outline-none focus:outline-none mr-1 mb-1"
                                     type="button" style="transition:all .15s ease" />
                             </div>
                         </div>
@@ -110,6 +110,7 @@
 
                                     @php
                                         $sub_total = 0;
+                                        $all_total = 0;
                                     @endphp
                                     @foreach ($data->orderDetail as $item)
                                         @php
@@ -166,6 +167,7 @@
                                         <div class="col-span-1 sm:col-span-1">
                                             <label
                                                 class="block text-sm text-center font-bold text-gray-700">{{ $sub_total }}
+                                                (¥)
                                             </label>
                                         </div>
                                     </div>
@@ -182,6 +184,7 @@
                                         <div class="col-span-1 sm:col-span-1 md:mr-4">
                                             <label
                                                 class="block text-sm text-center font-bold text-gray-700">{{ $data->china_delivery_fee }}
+                                                (¥)
                                             </label>
                                         </div>
                                     </div>
@@ -196,7 +199,7 @@
                                         </div>
                                         <div class="col-span-1 sm:col-span-1">
                                             <label class="block text-sm font-bold text-center text-gray-700">
-                                                {{ $data->custom_fee }}
+                                                {{ $data->custom_fee }} (¥)
                                             </label>
                                         </div>
                                     </div>
@@ -210,7 +213,7 @@
                                         </div>
                                         <div class="col-span-1 sm:col-span-1 md:mr-4">
                                             <label class="block text-sm font-bold text-center text-gray-700">
-                                                {{ $sub_total + $data->china_delivery_fee + $data->custom_fee }}
+                                                {{ $sub_total + $data->china_delivery_fee + $data->custom_fee }} (¥)
                                             </label>
                                         </div>
                                     </div>
@@ -221,11 +224,12 @@
                                                 Type : </label>
                                             <label class="text-sm font-medium text-gray-700 ml-3">
                                                 {{ $data->payment_type == 1 ? 'Cash' : 'Banking' }}</label>
-                                            text-right
                                         </div>
                                         <div class="col-span-2 sm:col-span-2">
                                             <label class="text-sm font-bold text-gray-700">Currency Exchange
-                                                Rate({{ $data->currency_exchange_unit }}) : </label>
+                                                Rate
+                                                {{ $data->currency_exchange_unit ? '(' . $data->currency_exchange_unit . ')' : '' }}
+                                                : </label>
                                             <label class="text-sm font-medium text-gray-700">
                                                 {{ $data->currency_exchange_rate }}
                                             </label>
@@ -236,7 +240,35 @@
                                         </div>
                                         <div class="col-span-1 sm:col-span-1 text-center">
                                             <label
-                                                class="text-sm font-medium text-gray">{{ $data->delivery_fee }}</label>
+                                                class="block text-sm font-bold text-center text-gray-700">{{ $data->delivery_fee }}
+                                                (K)</label>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-2 sm:col-span-2">
+                                            <label class="text-sm font-bold text-gray-700"></label>
+                                            <label class="text-sm font-medium text-gray-700 ml-3">
+                                            </label>
+                                        </div>
+                                        <div class="col-span-2 sm:col-span-2">
+                                            <label class="text-sm font-bold text-gray-700"> </label>
+                                            <label class="text-sm font-medium text-gray-700">
+                                            </label>
+                                        </div>
+                                        <div class="col-span-1 sm:col-span-1">
+                                            <label class="text-sm font-bold text-gray-700">All Total : </label>
+                                        </div>
+                                        <div class="col-span-1 sm:col-span-1 text-center">
+                                            @if ($data->payment_type == 2)
+                                                @php
+                                                    $sub_total = $sub_total + $data->china_delivery_fee + $data->custom_fee;
+                                                    $all_total = $sub_total * $data->currency_exchange_rate + $data->delivery_fee;
+                                                @endphp
+                                            @else
+                                            @endif
+                                            <label
+                                                class="block text-sm font-bold text-center text-gray-700">{{ $all_total }}
+                                                (K)</label>
                                         </div>
                                     </div>
                                 </div>

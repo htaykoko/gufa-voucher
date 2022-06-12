@@ -6,7 +6,7 @@
                     <div class="mt-5 md:mt-0 md:col-span-2">
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                        <form action="{{ route('admin.orders.store') }}" method="POST">
+                        <form action="{{ route('admin.orders.store') }}" method="POST" id="form">
                             @method('post')
                             @csrf
                             <div class="shadow sm:rounded-md sm:overflow-hidden">
@@ -43,7 +43,7 @@
                                                     Name</label>
                                                 <input type="text" name="product_name[]" id="product_name"
                                                     autocomplete="product_name-name"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="product_name mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             </div>
 
                                             <div class="col-span-1 sm:col-span-1">
@@ -51,7 +51,7 @@
                                                     class="block text-sm text-center font-medium text-gray-700">Quantity</label>
                                                 <input type="text" name="quantity[]" id="quantity"
                                                     autocomplete="quantity"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="quantity mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             </div>
 
                                             <div class="col-span-1 sm:col-span-1">
@@ -69,14 +69,14 @@
                                                     class="block text-sm text-center font-medium text-gray-700">Weight</label>
                                                 <input type="number" name="unit_qty[]" id="unit_qty"
                                                     autocomplete="unit_qty"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="unit_qty mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             </div>
 
                                             <div class="col-span-1 sm:col-span-1">
                                                 <label for="price"
                                                     class="block text-sm text-center font-medium text-gray-700">Price</label>
                                                 <input type="number" name="price[]" id="price" autocomplete="price"
-                                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    class="price mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                             </div>
                                             <div class="col-span-1 sm:col-span-1">
                                                 <button
@@ -86,18 +86,6 @@
                                         </div>
                                     </div>
                                     {{-- end entry --}}
-
-                                    {{-- <div class="grid grid-cols-6 gap-6">
-                                        <div class="col-span-6 sm:col-span-3">
-                                        </div>
-
-                                        <div class="col-span-1 sm:col-span-1">
-                                            Sub Total
-                                        </div>
-                                        <div class="col-span-1 sm:col-span-1">
-                                            <span id="final_total_amt"></span>
-                                        </div>
-                                    </div> --}}
 
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6 sm:col-span-3">
@@ -173,7 +161,7 @@
                                 </div>
                             </div>
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit"
+                                <button type="submit" id="submit"
                                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
                             </div>
                             <input type="hidden" name="total_item" id="total_item" value="1" />
@@ -243,13 +231,29 @@
     //Remove Item Row
     $(document).on('click', '.remove_row', function() {
         var row_id = $(this).attr("id");
-        // var total_item_amount = $('#order_item_amount_ks' + row_id).val();
-        // var final_amount = $('#final_total_amt').text();
-        // var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
-        // $('#final_total_amt').text(result_amount);
         $('#row_id_' + row_id).remove();
         count--;
-        // $('#total_item').val(count);
     });
-    //End Remove Item Row
+    //End Remove Item Row'
+
+    //validate before submit
+    // $(document).on('click', '#submit', function(e) {
+    //     console.log("clkl");
+    //     var product_name, quantity, unit_qty, price;
+
+    //     $('#add-order').find(".product_name").each(function(k, v) {
+    //         console.log(k, v);
+    //         product_name = v;
+    //     });
+    //     if (product_name <= 0) {
+    //         alert("Promotion product Item are required");
+    //         // $(e.target).closest('tbody').find(".promo-error").first().html(
+    //         //     '<span class="error mt-2 text-danger">At Least One Promotion Product Quantity is Required</span>'
+    //         // );
+    //         // $(e.target).closest('tbody').find(".pro-quantity").first().focus();
+    //         return false;
+    //     }
+
+    //     $("#form").submit();
+    // });
 </script>
