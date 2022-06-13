@@ -8,7 +8,7 @@
 
         <ul class="mt-3 list-disc list-inside text-sm text-red-600">
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li class="block bg-gray-300 px-2 py-1 rounded mb-1">{{ $error }}</li>
             @endforeach
         </ul>
     </div>

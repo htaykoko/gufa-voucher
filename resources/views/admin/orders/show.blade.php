@@ -223,7 +223,7 @@
                                             <label class="text-sm font-bold text-gray-700">Payment
                                                 Type : </label>
                                             <label class="text-sm font-medium text-gray-700 ml-3">
-                                                {{ $data->payment_type == 1 ? 'Cash' : 'Banking' }}</label>
+                                                {{ $data->payment_type == 1 ? 'Yuan' : 'Kyat' }}</label>
                                         </div>
                                         <div class="col-span-2 sm:col-span-2">
                                             <label class="text-sm font-bold text-gray-700">Currency Exchange

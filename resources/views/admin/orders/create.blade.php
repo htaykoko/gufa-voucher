@@ -126,10 +126,10 @@
                                             <select id="payment_type" name="payment_type" autocomplete="payment_type"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option>Select</option>
-                                                <option value="1" {{ old('payment_type') ? 'selected' : '' }}>Cash
+                                                <option value="1" {{ old('payment_type') ? 'selected' : '' }}>Yuan
                                                 </option>
                                                 <option value="2" {{ old('payment_type') == 2 ? 'selected' : '' }}>
-                                                    Banking
+                                                    Kyat
                                                 </option>
                                             </select>
                                         </div>
