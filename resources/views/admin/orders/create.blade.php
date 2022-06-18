@@ -15,8 +15,8 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="date"
                                                 class="block text-sm font-medium text-gray-700">Date</label>
-                                            <input type="date" name="date" value="{{ old('date') }}" id="date"
-                                                autocomplete="given-name"
+                                            <input type="date" name="date" value="{{ old('date') }}"
+                                                id="date" autocomplete="given-name"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
@@ -36,53 +36,58 @@
 
                                     {{-- entry --}}
                                     <div id="add-order">
-                                        <div class="grid grid-cols-6 gap-6">
-                                            <div class="col-span-1 sm:col-span-1">
-                                                <label for="product_name"
-                                                    class="block text-sm text-center font-medium text-gray-700">Code</label>
-                                                <input type="text" name="product_name[]" id="product_name"
-                                                    autocomplete="product_name-name"
-                                                    class="product_name mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
+                                        @if (old('product_name') != '' || old('quantity') != '' || old('unit_qty') != '' || old('price') != '')
+                                            @include('admin.orders.create_old')
+                                        @else
+                                            <div class="grid grid-cols-6 gap-6">
+                                                <div class="col-span-1 sm:col-span-1">
+                                                    <label for="product_name"
+                                                        class="block text-sm text-center font-medium text-gray-700">Code</label>
+                                                    <input type="text" name="product_name[]" id="product_name"
+                                                        autocomplete="product_name"
+                                                        class="product_name mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                </div>
 
-                                            <div class="col-span-1 sm:col-span-1">
-                                                <label for="quantity"
-                                                    class="block text-sm text-center font-medium text-gray-700">Quantity</label>
-                                                <input type="text" name="quantity[]" id="quantity"
-                                                    autocomplete="quantity"
-                                                    class="quantity mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
+                                                <div class="col-span-1 sm:col-span-1">
+                                                    <label for="quantity"
+                                                        class="block text-sm text-center font-medium text-gray-700">Quantity</label>
+                                                    <input type="text" name="quantity[]" id="quantity"
+                                                        autocomplete="quantity"
+                                                        class="quantity mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                </div>
 
-                                            <div class="col-span-1 sm:col-span-1">
-                                                <label for="unit_id"
-                                                    class="block text-sm text-center font-medium text-gray-700">Unit</label>
-                                                <select id="unit_id" name="unit_id[]" autocomplete="unit_id"
-                                                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                    <option value="1">Kg</option>
-                                                    <option value="2">Cbm</option>
-                                                </select>
-                                            </div>
+                                                <div class="col-span-1 sm:col-span-1">
+                                                    <label for="unit_id"
+                                                        class="block text-sm text-center font-medium text-gray-700">Unit</label>
+                                                    <select id="unit_id" name="unit_id[]" autocomplete="unit_id"
+                                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                        <option value="1">Kg</option>
+                                                        <option value="2">Cbm</option>
+                                                    </select>
+                                                </div>
 
-                                            <div class="col-span-1 sm:col-span-1">
-                                                <label for="unit_qty"
-                                                    class="block text-sm text-center font-medium text-gray-700">Weight</label>
-                                                <input type="text" name="unit_qty[]" id="unit_qty"
-                                                    autocomplete="unit_qty"
-                                                    class="unit_qty mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
+                                                <div class="col-span-1 sm:col-span-1">
+                                                    <label for="unit_qty"
+                                                        class="block text-sm text-center font-medium text-gray-700">Weight</label>
+                                                    <input type="text" name="unit_qty[]" id="unit_qty"
+                                                        autocomplete="unit_qty"
+                                                        class="unit_qty mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                </div>
 
-                                            <div class="col-span-1 sm:col-span-1">
-                                                <label for="price"
-                                                    class="block text-sm text-center font-medium text-gray-700">Price</label>
-                                                <input type="text" name="price[]" id="price" autocomplete="price"
-                                                    class="price mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                <div class="col-span-1 sm:col-span-1">
+                                                    <label for="price"
+                                                        class="block text-sm text-center font-medium text-gray-700">Price</label>
+                                                    <input type="text" name="price[]" id="price"
+                                                        autocomplete="price"
+                                                        class="price mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                </div>
+                                                <div class="col-span-1 sm:col-span-1">
+                                                    <button
+                                                        class="mt-5 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500"
+                                                        id="add_row" type="button">Add</button>
+                                                </div>
                                             </div>
-                                            <div class="col-span-1 sm:col-span-1">
-                                                <button
-                                                    class="mt-5 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500"
-                                                    id="add_row" type="button">Add</button>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
                                     {{-- end entry --}}
 
@@ -112,8 +117,9 @@
                                             <label for="delivery_fee"
                                                 class="block text-sm font-medium text-gray-700">Delivery
                                                 Fee</label>
-                                            <input type="text" name="delivery_fee" value="{{ old('delivery_fee') }}"
-                                                id="delivery_fee" autocomplete="delivery_fee"
+                                            <input type="text" name="delivery_fee"
+                                                value="{{ old('delivery_fee') }}" id="delivery_fee"
+                                                autocomplete="delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                     </div>
@@ -126,9 +132,11 @@
                                             <select id="payment_type" name="payment_type" autocomplete="payment_type"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option>Select</option>
-                                                <option value="1" {{ old('payment_type') ? 'selected' : '' }}>Cash
+                                                <option value="1" {{ old('payment_type') ? 'selected' : '' }}>
+                                                    Cash
                                                 </option>
-                                                <option value="2" {{ old('payment_type') == 2 ? 'selected' : '' }}>
+                                                <option value="2"
+                                                    {{ old('payment_type') == 2 ? 'selected' : '' }}>
                                                     Banking
                                                 </option>
                                             </select>
@@ -146,11 +154,11 @@
                                                 class="mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option>Select</option>
                                                 <option value="yum"
-                                                    {{ old('currency_exchange_rate') == 'Yum' ? 'selected' : '' }}>
+                                                    {{ old('currency_exchange_unit') == 'yum' ? 'selected' : '' }}>
                                                     Yum
                                                 </option>
                                                 <option value="kyat"
-                                                    {{ old('currency_exchange_rate') == 'Kyat' ? 'selected' : '' }}>
+                                                    {{ old('currency_exchange_unit') == 'kyat' ? 'selected' : '' }}>
                                                     Kyat
                                                 </option>
                                             </select>
@@ -164,7 +172,8 @@
                                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
                             </div>
                             <input type="hidden" name="total_item" id="total_item" value="1" />
-                            <input type="hidden" name="save_final_total_amt" id="save_final_total_amt" value="0" />
+                            <input type="hidden" name="save_final_total_amt" id="save_final_total_amt"
+                                value="0" />
                         </form>
                     </div>
                 </div>
@@ -183,9 +192,9 @@
         html_code += '<div class="grid grid-cols-6 gap-6" id="row_id_' + count + '">';
         html_code += '    <div class="col-span-1 sm:col-span-1">';
         html_code += '        <input type="text" name="product_name[]" id="product_name"';
-        html_code += '            autocomplete="product_name-name"';
+        html_code += '            autocomplete="product_name"';
         html_code +=
-            '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+            '            class="product_name mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
         html_code += '    </div>';
 
         html_code += '    <div class="col-span-1 sm:col-span-1">';
@@ -232,6 +241,13 @@
         var row_id = $(this).attr("id");
         $('#row_id_' + row_id).remove();
         count--;
+    });
+
+    $(document).delegate(".product_name", "keypress", function() {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
     });
     //End Remove Item Row'
 

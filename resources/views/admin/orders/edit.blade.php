@@ -31,8 +31,9 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="date"
                                                 class="block text-sm font-medium text-gray-700">Date</label>
-                                            <input type="date" name="date" value="{{ old('date', $data->date) }}"
-                                                id="date" autocomplete="given-name"
+                                            <input type="date" name="date"
+                                                value="{{ old('date', $data->date) }}" id="date"
+                                                autocomplete="given-name"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
@@ -86,20 +87,22 @@
                                                 <div class="col-span-1 sm:col-span-1">
                                                     <input type="text" name="product_name[]"
                                                         value={{ $item->product_name }} id="product_name"
-                                                        autocomplete="product_name-name"
-                                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                        autocomplete="product_name"
+                                                        class="product_name mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                 </div>
 
                                                 <div class="col-span-1 sm:col-span-1">
-                                                    <input type="text" name="quantity[]" value="{{ $item->quantity }}"
-                                                        id="quantity" autocomplete="quantity"
+                                                    <input type="text" name="quantity[]"
+                                                        value="{{ $item->quantity }}" id="quantity"
+                                                        autocomplete="quantity"
                                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                 </div>
 
                                                 <div class="col-span-1 sm:col-span-1">
                                                     <select id="unit_id" name="unit_id[]" autocomplete="unit_id"
                                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                        <option value="1" {{ $item->unit_id == 1 ? 'selected' : '' }}>
+                                                        <option value="1"
+                                                            {{ $item->unit_id == 1 ? 'selected' : '' }}>
                                                             Kg</option>
                                                         <option value="2"
                                                             {{ $item->unit_id == 2 ? 'selected' : '' }}>
@@ -149,7 +152,8 @@
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="custom_fee"
                                                 class="block text-sm font-medium text-gray-700">Custom Fee</label>
-                                            <input type="text" value="{{ old('custom_fee', $data->custom_fee) }}"
+                                            <input type="text"
+                                                value="{{ old('custom_fee', $data->custom_fee) }}"
                                                 name="custom_fee" id="custom_fee" autocomplete="custom_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
@@ -202,13 +206,15 @@
                                             <label for="delivery_fee"
                                                 class="block text-sm font-medium text-gray-700">Delivery
                                                 Fee</label>
-                                            <input type="text" value="{{ old('delivery_fee', $data->delivery_fee) }}"
+                                            <input type="text"
+                                                value="{{ old('delivery_fee', $data->delivery_fee) }}"
                                                 name="delivery_fee" id="delivery_fee" autocomplete="delivery_fee"
                                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                         </div>
 
                                         <div class="col-span-6 sm:col-span-3">
-                                            <label for="status" class="block text-sm font-medium text-gray-700">Order
+                                            <label for="status"
+                                                class="block text-sm font-medium text-gray-700">Order
                                                 Status</label>
                                             <select id="status" name="status" autocomplete="status"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -226,7 +232,8 @@
                                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
                             </div>
                             <input type="hidden" name="total_item" id="total_item" value="1" />
-                            <input type="hidden" name="save_final_total_amt" id="save_final_total_amt" value="0" />
+                            <input type="hidden" name="save_final_total_amt" id="save_final_total_amt"
+                                value="0" />
                         </form>
                     </div>
                 </div>
@@ -245,9 +252,9 @@
         html_code += '<div class="grid grid-cols-6 gap-6" id="row_id_' + count + '">';
         html_code += '    <div class="col-span-1 sm:col-span-1">';
         html_code += '        <input type="text" name="product_name[]" id="product_name"';
-        html_code += '            autocomplete="product_name-name"';
+        html_code += '            autocomplete="product_name"';
         html_code +=
-            '            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
+            '            class="product_name mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">';
         html_code += '    </div>';
 
         html_code += '    <div class="col-span-1 sm:col-span-1">';
@@ -301,4 +308,11 @@
         // $('#total_item').val(count);
     });
     //End Remove Item Row
+
+    $(document).delegate(".product_name", "keypress", function() {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
 </script>

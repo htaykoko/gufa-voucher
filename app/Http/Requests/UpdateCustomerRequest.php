@@ -25,6 +25,7 @@ class UpdateCustomerRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'code' => 'nullable',
             'phone' => 'required',
             'mobile' => 'required',
             'address' => 'required',

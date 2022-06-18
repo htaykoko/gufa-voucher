@@ -29,9 +29,11 @@
                                     <select id="payment_type" name="paymentType" autocomplete="payment_type"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                         <option value="">Status</option>
-                                        <option value="1" {{ request('paymentType') == 1 ? 'selected' : '' }}>Paid
+                                        <option value="1" {{ request('paymentType') == 1 ? 'selected' : '' }}>
+                                            Paid
                                         </option>
-                                        <option value="0" {{ request('paymentType') == 2 ? 'selected' : '' }}>Unpaid
+                                        <option value="0" {{ request('paymentType') == 2 ? 'selected' : '' }}>
+                                            Unpaid
                                         </option>
                                     </select>
                                 </div>
@@ -49,8 +51,8 @@
                                 <div class="col-span-3 sm:col-span-3">
                                     <label for="to_date" class="block text-sm font-medium text-gray-700">From
                                         Date</label>
-                                    <input type="date" name="toDate" value="{{ request('toDate') }}" id="to_date"
-                                        autocomplete="to_date"
+                                    <input type="date" name="toDate" value="{{ request('toDate') }}"
+                                        id="to_date" autocomplete="to_date"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
@@ -83,7 +85,10 @@
                                     Date</td>
                                 <td
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold ">
-                                    Customer name</td>
+                                    Customer Name</td>
+                                <td
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold ">
+                                    Customer Code</td>
                                 <td
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold ">
                                     Status</td>
@@ -113,6 +118,10 @@
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         {{ optional($order->customer)->name }}
+                                    </td>
+                                    <td
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ optional($order->customer)->code }}
                                     </td>
                                     <td
                                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">

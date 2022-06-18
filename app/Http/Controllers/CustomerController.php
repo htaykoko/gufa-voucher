@@ -39,7 +39,9 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        $data = Customer::create($request->validated());
+        $data = Customer::create($request->validated() + [
+            'code' => $this->getCustomerCode()
+        ]);
         if ($data)
             return redirect()->route("admin.customers.index")->with('success', "Success");
     }
@@ -93,5 +95,12 @@ class CustomerController extends Controller
     {
         $customer->delete();
         return redirect()->route('admin.customers.index')->with("success", config('messages.deleteSuccess'));
+    }
+
+    public function getCustomerCode()
+    {
+        $count = Customer::count();
+        $code = str_pad($count, 6, 0, STR_PAD_LEFT);
+        return "CUS" . $code;
     }
 }
