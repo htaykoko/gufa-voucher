@@ -26,20 +26,25 @@ class UpdateOrderRequest extends FormRequest
         return [
             'customer_id' => 'required',
             'date' => 'required',
-            'china_delivery_fee' => 'nullable|numeric|gt:0',
-            'custom_fee' => 'nullable|numeric|gt:0',
-            'delivery_fee' => 'nullable|numeric|gt:0',
+            'china_delivery_fee' => 'nullable|numeric|gte:0',
+            'custom_fee' => 'nullable|numeric|gte:0',
+            'delivery_fee' => 'nullable|numeric|gte:0',
             'payment_type' => 'required',
-            'currency_exchange_rate' => 'required_if:payment_type,2|nullable|numeric|gt:0',
+            'currency_exchange_rate' => 'required_if:payment_type,2|nullable|numeric|gte:0',
             'currency_exchange_unit' => 'required_with:currency_exchange_rate,',
             'status' => 'required',
 
             // orderd details data
-            'product_name.*' => 'required',
-            'quantity.*' => 'required',
-            'unit_id.*' => 'required',
-            'unit_qty.*' => 'required|numeric|gt:0',
-            'price.*' => 'required|numeric|gt:0',
+            'product_name' => 'required|array',
+            'product_name.*' => 'sometimes|required',
+            'quantity' => 'required|array',
+            'quantity.*' => 'sometimes|required|numeric|gte:0',
+            'unit_id' => 'required|array',
+            'unit_id.*' => 'sometimes|required',
+            'unit_qty' => 'required|array',
+            'unit_qty.*' => 'sometimes|required|numeric|gte:0',
+            'price' => 'required|array',
+            'price.*' => 'sometimes|required|numeric|gte:0',
         ];
     }
 }

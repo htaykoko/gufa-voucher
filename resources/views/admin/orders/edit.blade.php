@@ -170,10 +170,10 @@
                                                 <option>Select</option>
                                                 <option value="1"
                                                     {{ $data->payment_type == old('payment_type', 1) ? 'selected' : '' }}>
-                                                    Cash</option>
+                                                    Yuan</option>
                                                 <option value="2"
                                                     {{ $data->payment_type == old('payment_type', 2) ? 'selected' : '' }}>
-                                                    Banking</option>
+                                                    Kyat</option>
                                             </select>
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
