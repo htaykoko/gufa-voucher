@@ -45,43 +45,46 @@
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
-                                <tr>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $loop->iteration }}</td>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $user->username }}</td>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $user->level }}</td>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $user->email }}</td>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $user->is_active ? 'Active' : 'In-Active' }}</td>
-                                    <td
-                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <div class="flex flex-row">
-                                            <a href="{{ route('admin.users.edit', $user->id) }}"
-                                                class="justify-center px-2 py-1 border border-transparent shadow-sm rounded-md text-white hover:bg-indigo-700">
-                                                <i class="fas fa-edit text-red-500 mr-4"></i></a>
+                            <tr>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $loop->iteration }}</td>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $user->username }}</td>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $user->level }}</td>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $user->email }}</td>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $user->is_active ? 'Active' : 'In-Active' }}</td>
+                                <td
+                                    class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <div class="flex flex-row">
+                                        <a href="{{ route('admin.users.edit', $user->id) }}"
+                                            class="justify-center px-2 py-1 border border-transparent shadow-sm rounded-md text-white hover:bg-indigo-700">
+                                            <i class="fas fa-edit text-red-500 mr-4"></i></a>
 
-                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button title="Edit" onclick="return confirm('Are You Sure?');"
-                                                    class="justify-center px-2 py-1 border border-transparent shadow-sm rounded-md text-white hover:bg-indigo-700">
-                                                    <i class="fas fa-trash text-red-500 "></i></button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button title="Edit" onclick="return confirm('Are You Sure?');"
+                                                class="justify-center px-2 py-1 border border-transparent shadow-sm rounded-md text-white hover:bg-indigo-700">
+                                                <i class="fas fa-trash text-red-500 "></i></button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="px-2 py-5">
+                        {{ $users->links() }}
+                    </div>
                 </div>
             </div>
         </div>
