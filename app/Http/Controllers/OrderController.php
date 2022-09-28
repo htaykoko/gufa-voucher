@@ -170,8 +170,10 @@ class OrderController extends Controller
 
     public function generateOrderCode()
     {
-        $order = Order::all()->last();
-        $code = optional($order)->voucher_id + 1;
+        // $order = Order::all()->last();
+        // $code = optional($order)->voucher_id + 1;
+        $order =  DB::table('orders')->max('id');
+        $code = $order + 1;
         return $code;
     }
 }
